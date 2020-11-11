@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
     <section  class="homepage-slider" id="home-slider">
@@ -129,7 +129,7 @@
                                         <li class="span3">
                                             <div class="product-box">
                                                 <span class="sale_tag"></span>
-                                                <p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware2.jpg" alt="" /></a></p>
+                                                <p><a href="product_detail.html"><img src="themes/images/ladies/2.jpg" alt="" /></a></p>
                                                 <a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
                                                 <a href="products.html" class="category">Commodo consequat</a>
                                                 <p class="price">$25.50</p>
@@ -137,7 +137,7 @@
                                         </li>
                                         <li class="span3">
                                             <div class="product-box">
-                                                <p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware1.jpg" alt="" /></a></p>
+                                                <p><a href="product_detail.html"><img src="themes/images/ladies/1.jpg" alt="" /></a></p>
                                                 <a href="product_detail.html" class="title">Quis nostrud exerci tation</a><br/>
                                                 <a href="products.html" class="category">Quis nostrud</a>
                                                 <p class="price">$17.55</p>
@@ -145,7 +145,7 @@
                                         </li>
                                         <li class="span3">
                                             <div class="product-box">
-                                                <p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware6.jpg" alt="" /></a></p>
+                                                <p><a href="product_detail.html"><img src="themes/images/ladies/6.jpg" alt="" /></a></p>
                                                 <a href="product_detail.html" class="title">Know exactly turned</a><br/>
                                                 <a href="products.html" class="category">Quis nostrud</a>
                                                 <p class="price">$25.30</p>
@@ -153,7 +153,7 @@
                                         </li>
                                         <li class="span3">
                                             <div class="product-box">
-                                                <p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware5.jpg" alt="" /></a></p>
+                                                <p><a href="product_detail.html"><img src="themes/images/ladies/5.jpg" alt="" /></a></p>
                                                 <a href="product_detail.html" class="title">You think fast</a><br/>
                                                 <a href="products.html" class="category">World once</a>
                                                 <p class="price">$25.60</p>
@@ -165,7 +165,7 @@
                                     <ul class="thumbnails">
                                         <li class="span3">
                                             <div class="product-box">
-                                                <p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware4.jpg" alt="" /></a></p>
+                                                <p><a href="product_detail.html"><img src="themes/images/ladies/4.jpg" alt="" /></a></p>
                                                 <a href="product_detail.html" class="title">Know exactly</a><br/>
                                                 <a href="products.html" class="category">Quis nostrud</a>
                                                 <p class="price">$45.50</p>
@@ -173,7 +173,7 @@
                                         </li>
                                         <li class="span3">
                                             <div class="product-box">
-                                                <p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware3.jpg" alt="" /></a></p>
+                                                <p><a href="product_detail.html"><img src="themes/images/ladies/3.jpg" alt="" /></a></p>
                                                 <a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
                                                 <a href="products.html" class="category">Commodo consequat</a>
                                                 <p class="price">$33.50</p>
@@ -181,7 +181,7 @@
                                         </li>
                                         <li class="span3">
                                             <div class="product-box">
-                                                <p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware2.jpg" alt="" /></a></p>
+                                                <p><a href="product_detail.html"><img src="themes/images/ladies/2.jpg" alt="" /></a></p>
                                                 <a href="product_detail.html" class="title">You think water</a><br/>
                                                 <a href="products.html" class="category">World once</a>
                                                 <p class="price">$45.30</p>
@@ -189,7 +189,7 @@
                                         </li>
                                         <li class="span3">
                                             <div class="product-box">
-                                                <p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware1.jpg" alt="" /></a></p>
+                                                <p><a href="product_detail.html"><img src="themes/images/ladies/1.jpg" alt="" /></a></p>
                                                 <a href="product_detail.html" class="title">Quis nostrud exerci</a><br/>
                                                 <a href="products.html" class="category">Quis nostrud</a>
                                                 <p class="price">$25.20</p>

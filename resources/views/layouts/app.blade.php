@@ -40,7 +40,25 @@
                     <li><a href="#">My Account</a></li>
                     <li><a href="{{ url('/cart') }}">Your Cart</a></li>
                     <li><a href="{{ url('/checkout') }}">Checkout</a></li>
-                    <li><a href="{{ url('/register') }}">Login</a></li>
+                    @guest
+                        @if (Route::has('login'))
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                        @endif
+                        @if (Route::has('register'))
+                            <li><a href="{{ route('register') }}">Register</a></li>
+                        @endif
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="logged_name nav-link dropdown-toggle" href="{{ route('logout') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
+                               onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                <span>{{ Auth::user()->name }}</span>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
+                    @endguest
                 </ul>
             </div>
         </div>
@@ -112,7 +130,7 @@
         </div>
     </section>
     <section id="copyright">
-        <span>Copyright 2013 bootstrappage template  All right reserved.</span>
+        <span>BlackPink ITSS II 2020</span>
     </section>
 </div>
 <script src="{{ asset('js/common.js') }}"></script>

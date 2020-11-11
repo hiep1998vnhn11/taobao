@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,12 +13,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
-});
-
-Route::get('/register', function(){
-   return view('register');
-});
+    return view('layouts.home');
+})->name('/');
+Auth::routes();
 
 Route::get('/cart', function(){
     return view('cart');
@@ -28,3 +24,4 @@ Route::get('/cart', function(){
 Route::get('/checkout', function(){
     return view('checkout');
 });
+
