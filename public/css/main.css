@@ -799,5 +799,5 @@ section.our_client .row{
      display: none;
  }
  .logged_name:hover:before{
-     content:"Logout";
+     content:"Đăng xuất";
  }
