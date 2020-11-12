@@ -40,9 +40,9 @@
                                         <li class="span3">
                                             <div class="product-box">
                                                 <span class="sale_tag"></span>
-                                                <p><a href="product_detail.html"><img src="themes/images/ladies/1.jpg" alt="" /></a></p>
-                                                <a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
-                                                <a href="products.html" class="category">Commodo consequat</a>
+                                                <p><a href="/product-detail"><img src="themes/images/ladies/1.jpg" alt="" /></a></p>
+                                                <a href="/product-detail" class="title">Ut wisi enim ad</a><br/>
+                                                <a href="/product-detail" class="category">Commodo consequat</a>
                                                 <p class="price">$17.25</p>
                                             </div>
                                         </li>

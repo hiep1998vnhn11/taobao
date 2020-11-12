@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Bootstrap E-commerce Templates</title>
+    <title>Taobao ITSS II</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
@@ -37,15 +37,15 @@
         <div class="span8">
             <div class="account pull-right">
                 <ul class="user-menu">
-                    <li><a href="#">My Account</a></li>
-                    <li><a href="{{ url('/cart') }}">Your Cart</a></li>
-                    <li><a href="{{ url('/checkout') }}">Checkout</a></li>
+                    <li><a href="#">Tài khoản</a></li>
+                    <li><a href="{{ url('/cart') }}">Giỏ Hàng</a></li>
+                    <li><a href="{{ url('/checkout') }}">Thanh Toán</a></li>
                     @guest
                         @if (Route::has('login'))
-                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('login') }}">Đăng nhập</a></li>
                         @endif
                         @if (Route::has('register'))
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('register') }}">Đăng kí</a></li>
                         @endif
                     @else
                         <li class="nav-item dropdown">
@@ -67,27 +67,27 @@
 <div id="wrapper" class="container">
     <section class="navbar main-menu">
         <div class="navbar-inner main-menu">
-            <a href="index.html" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
+            <a href="/" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
             <nav id="menu" class="pull-right">
                 <ul>
-                    <li><a href="./products.html">Woman</a>
+                    <li><a href="./products.html">Đồ nữ</a>
                         <ul>
                             <li><a href="./products.html">Lacinia nibh</a></li>
                             <li><a href="./products.html">Eget molestie</a></li>
                             <li><a href="./products.html">Varius purus</a></li>
                         </ul>
                     </li>
-                    <li><a href="./products.html">Man</a></li>
-                    <li><a href="./products.html">Sport</a>
+                    <li><a href="./products.html">Đồ nam</a></li>
+                    <li><a href="./products.html">Đồ thể thao</a>
                         <ul>
                             <li><a href="./products.html">Gifts and Tech</a></li>
                             <li><a href="./products.html">Ties and Hats</a></li>
                             <li><a href="./products.html">Cold Weather</a></li>
                         </ul>
                     </li>
-                    <li><a href="./products.html">Hangbag</a></li>
-                    <li><a href="./products.html">Best Seller</a></li>
-                    <li><a href="./products.html">Top Seller</a></li>
+                    <li><a href="./products.html">Túi sách</a></li>
+                    <li><a href="./products.html">Giày</a></li>
+                    <li><a href="./products.html">Vest</a></li>
                 </ul>
             </nav>
         </div>
@@ -100,20 +100,19 @@
             <div class="span3">
                 <h4>Navigation</h4>
                 <ul class="nav">
-                    <li><a href="./index.html">Homepage</a></li>
-                    <li><a href="./about.html">About Us</a></li>
-                    <li><a href="./contact.html">Contac Us</a></li>
-                    <li><a href="./cart.html">Your Cart</a></li>
-                    <li><a href="./register.html">Login</a></li>
+                    <li><a href="./index.html">Trang chủ</a></li>
+                    <li><a href="./about.html">Thông tin</a></li>
+                    <li><a href="./contact.html">Liên hệ</a></li>
+                    <li><a href="./cart.html">Giỏ hàng</a></li>
+                    <li><a href="./register.html">Đăng kí</a></li>
                 </ul>
             </div>
             <div class="span4">
                 <h4>My Account</h4>
                 <ul class="nav">
-                    <li><a href="#">My Account</a></li>
-                    <li><a href="#">Order History</a></li>
-                    <li><a href="#">Wish List</a></li>
-                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Tài khoản</a></li>
+                    <li><a href="#">Lịch sử đơn hàng</a></li>
+                    <li><a href="#">Wishlist</a></li>
                 </ul>
             </div>
             <div class="span5">
