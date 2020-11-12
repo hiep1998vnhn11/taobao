@@ -17,22 +17,24 @@
                             <div class="accordion-inner">
                                 <div class="row-fluid">
                                     <div class="span6">
-                                        <h4>New Customer</h4>
+                                        <h4>Choose Payment Method</h4>
                                         <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
                                         <form action="#" method="post">
                                             <fieldset>
                                                 <label class="radio" for="register">
-                                                    <input type="radio" name="account" value="register" id="register" checked="checked">Register Account
+                                                    <input type="radio" name="account" value="register" id="momo" checked="checked">Momo
+                                                    <img class="payment-logo" src="https://upload.wikimedia.org/wikipedia/vi/archive/f/fe/20201011055543%21MoMo_Logo.png" alt="New products" style="width:30px;height:30px;" >
                                                 </label>
                                                 <label class="radio" for="guest">
-                                                    <input type="radio" name="account" value="guest" id="guest">Guest Checkout
+                                                    <input type="radio" name="account" value="guest" id="visa">VISA
+                                                    <img class="payment-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Former_Visa_%28company%29_logo.svg/1280px-Former_Visa_%28company%29_logo.svg.png" alt="New products" style="width:30px;" >
                                                 </label>
                                                 <br>
                                                 <button class="btn btn-inverse" data-toggle="collapse" data-parent="#collapse2">Continue</button>
                                             </fieldset>
                                         </form>
                                     </div>
-                                    <div class="span6">
+                                    <!-- <div class="span6">
                                         <h4>Returning Customer</h4>
                                         <p>I am a returning customer</p>
                                         <form action="#" method="post">
@@ -52,7 +54,7 @@
                                                 <button class="btn btn-inverse">Continue</button>
                                             </fieldset>
                                         </form>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
