@@ -21,6 +21,14 @@ Route::get('/cart', function(){
     return view('cart');
 });
 
+Route::get('/product-detail', function (){
+    return view('product_detail');
+});
+
+Route::get('/products', function (){
+    return view('products');
+});
+
 Route::get('/checkout', function(){
     return view('checkout');
 });
