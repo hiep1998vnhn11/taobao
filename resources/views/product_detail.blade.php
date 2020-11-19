@@ -36,17 +36,11 @@
                         <h4><strong>Price: $587.50</strong></h4>
                     </div>
                     <div class="span5">
-                        <form class="form-inline">
-                            <label class="checkbox">
-                                <input type="checkbox" value=""> Option one is this and that
-                            </label>
-                            <br/>
-                            <label class="checkbox">
-                                <input type="checkbox" value=""> Be sure to include why it's great
-                            </label>
-                            <p>&nbsp;</p>
+                        <form class="form-inline" action="/addToCart" method="post">
+                            @csrf
+                            <input type="hidden" name="productId" value="1"/>
                             <label>Qty:</label>
-                            <input type="text" class="span1" placeholder="1">
+                            <input type="text" class="span1" placeholder="1" value="1" name="quality">
                             <button class="btn btn-inverse" type="submit">Add to cart</button>
                         </form>
                     </div>

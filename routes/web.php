@@ -19,10 +19,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/cart',[OrderController::class, 'index'])->name('order_by_user');
+Route::post('/addToCart',[OrderController::class, 'store'])->name('add_to_cart');
 
 Route::get('/product-detail', function (){
     return view('product_detail');
-});
+})->name('product-detail');
 
 Route::get('/products', function (){
     return view('products');
