@@ -30,10 +30,9 @@
                         <li class="span3">
                             <div class="product-box">
                                 <span class="sale_tag"></span>
-                                <a href="#"><img alt="" src="{{$item->image}}"></a><br/>
-                                <a href="#" class="title">{{$item->name}}</a><br/>
+                                <a href="{{ url("/product-detail/".$item->id) }}"><img alt="" src="{{$item->image}}"></a><br/>
+                                <a href="{{ url("/product-detail/".$item->id) }}" class="title">{{$item->name}}</a><br/>
                                 <p class="price">{{$item->price}}</p>
-
                             </div>
                         </li>
                     @endforeach
