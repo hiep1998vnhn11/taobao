@@ -71,10 +71,10 @@
             <nav id="menu" class="pull-right">
                 <ul>
                     <li><a href="{{ url('/products/1') }}">Đồ nữ</a></li>
-                    <li><a href="./products/2">Đồ nam</a></li>
-                    <li><a href="./products/3">Đồ thể thao</a></li>
-                    <li><a href="./products/4">Túi sách</a></li>
-                    <li><a href="./products/5">Giày</a></li>
+                    <li><a href="{{ url('/products/2') }}">Đồ nam</a></li>
+                    <li><a href="{{ url('/products/3') }}">Đồ thể thao</a></li>
+                    <li><a href="{{ url('/products/4') }}">Túi sách</a></li>
+                    <li><a href="{{ url('/products/5') }}">Giày</a></li>
                 </ul>
             </nav>
         </div>

@@ -15,19 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.home');
-})->name('/');
+Route::get('/', [\App\Http\Controllers\ProductHomeController::class,'show'])->name('/');
 Auth::routes();
 
 Route::get('/cart',[OrderController::class, 'index'])->name('order_by_user');
 
 Route::get('/product-detail', function (){
     return view('product_detail');
-});
-
-Route::get('/products', function (){
-    return view('products');
 });
 
 Route::get('products/{category_id}',[ProductCategoryController::class, 'show']);
