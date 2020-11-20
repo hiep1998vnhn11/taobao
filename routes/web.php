@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductCategoryController;
+
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,8 @@ Route::get('/product-detail', function (){
 Route::get('/products', function (){
     return view('products');
 });
+
+Route::get('products/{category_id}',[ProductCategoryController::class, 'show']);
 
 Route::get('/checkout', function(){
     return view('checkout');

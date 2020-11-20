@@ -70,24 +70,11 @@
             <a href="/" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
             <nav id="menu" class="pull-right">
                 <ul>
-                    <li><a href="./products.html">Đồ nữ</a>
-                        <ul>
-                            <li><a href="./products.html">Lacinia nibh</a></li>
-                            <li><a href="./products.html">Eget molestie</a></li>
-                            <li><a href="./products.html">Varius purus</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="./products.html">Đồ nam</a></li>
-                    <li><a href="./products.html">Đồ thể thao</a>
-                        <ul>
-                            <li><a href="./products.html">Gifts and Tech</a></li>
-                            <li><a href="./products.html">Ties and Hats</a></li>
-                            <li><a href="./products.html">Cold Weather</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="./products.html">Túi sách</a></li>
-                    <li><a href="./products.html">Giày</a></li>
-                    <li><a href="./products.html">Vest</a></li>
+                    <li><a href="{{ url('/products/1') }}">Đồ nữ</a></li>
+                    <li><a href="./products/2">Đồ nam</a></li>
+                    <li><a href="./products/3">Đồ thể thao</a></li>
+                    <li><a href="./products/4">Túi sách</a></li>
+                    <li><a href="./products/5">Giày</a></li>
                 </ul>
             </nav>
         </div>
