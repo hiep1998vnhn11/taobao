@@ -121,14 +121,12 @@ class OrderController extends Controller
     public function update(Request $request)
     {
         //
-        $request_string = json_decode($request->listItemUpdate, true);
-        $list_item = $request_string[0];
-        dd($list_item);
+        $request_string = json_decode($request->listItemUpdate);
+        $list_item = $request_string;
         $user_id = Auth::user()->id;
         $order_id = DB::table('orders')->where('user_id', $user_id)->get()->get(0)->id;
         foreach ($list_item as $item)
         {
-            dd($item);
             DB::table('items')
                 ->where([['order_id', '=', $order_id],['product_id', '=', $item->id]])
                 ->update(['number' => $item->quality]);
