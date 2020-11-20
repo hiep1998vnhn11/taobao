@@ -64,9 +64,9 @@
                                             <li class="span3">
                                                 <div class="product-box">
                                                     <span class="sale_tag"></span>
-                                                    <a href="#"><img alt="" src="{{$item->image}}"></a><br/>
-                                                    <a href="#" class="title">{{$item->name}}</a><br/>
-                                                    <p class="price">{{$item->price}}</p>
+                                                    <a href="{{ url("/product-detail/".$item->id) }}"><img alt="" src="{{$item->image}}"></a><br/>
+                                                    <a href="{{ url("/product-detail/".$item->id) }}" class="title">{{$item->name}}</a><br/>
+                                                    <p class="price">{{$item->price}}.000đ</p>
 
                                                 </div>
                                             </li>
@@ -80,9 +80,9 @@
                                             <li class="span3">
                                                 <div class="product-box">
                                                     <span class="sale_tag"></span>
-                                                    <a href="#"><img alt="" src="{{$item->image}}"></a><br/>
-                                                    <a href="#" class="title">{{$item->name}}</a><br/>
-                                                    <p class="price">{{$item->price}}</p>
+                                                    <a href="{{ url("/product-detail/".$item->id) }}"><img alt="" src="{{$item->image}}"></a><br/>
+                                                    <a href="{{ url("/product-detail/".$item->id) }}" class="title">{{$item->name}}</a><br/>
+                                                    <p class="price">{{$item->price}}.000đ</p>
 
                                                 </div>
                                             </li>
