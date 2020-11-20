@@ -33,6 +33,7 @@
                                 <a href="#"><img alt="" src="{{$item->image}}"></a><br/>
                                 <a href="#" class="title">{{$item->name}}</a><br/>
                                 <p class="price">{{$item->price}}</p>
+
                             </div>
                         </li>
                     @endforeach

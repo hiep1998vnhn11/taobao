@@ -20,9 +20,7 @@ Auth::routes();
 
 Route::get('/cart',[OrderController::class, 'index'])->name('order_by_user');
 
-Route::get('/product-detail', function (){
-    return view('product_detail');
-});
+Route::get('/product-detail/{id}', 'ProductController@getProduct');
 
 Route::get('products/{category_id}',[ProductCategoryController::class, 'show']);
 
