@@ -26,7 +26,7 @@ class Order extends Model
                 $join->on('orders.id', '=', 'items.order_id');
             })->join('products', function ($join){
                 $join->on('products.id', '=', 'items.product_id');
-        })->where('orders.user_id', $user_id)->get(['items.number','products.name', 'products.price']);
+        })->where('orders.user_id', $user_id)->get(['items.number','products.name', 'products.price', 'products.id', 'orders.id']);
     }
 
     public function findOrderByUserId($id) {

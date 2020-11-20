@@ -7,32 +7,40 @@
     </section>
     <section class="main-content">
         <div class="row">
-            <div class="span9">
+            <div class="span11">
                 <h4 class="title"><span class="text"><strong>Your</strong> Cart</span></h4>
                 @if($items_order->count() > 0)
                     {{$priceTotal = 0}}
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Remove</th>
+                            <th>STT</th>
                             <th>Image</th>
                             <th>Product Name</th>
                             <th>Quantity</th>
                             <th>Unit Price</th>
                             <th>Total</th>
+                            <th>Delete</th>
                         </tr>
                         </thead>
                         <tbody>
+                        {{$count = 1}}
                         @foreach($items_order as $item)
-                            <tr>
-                                <td><input type="checkbox" value="option1"></td>
+                            <tr id="item{{$item->id}}">
+                                <td>{{$count}}</td>
                                 <td><a href="product_detail.html"><img alt="" src="themes/images/ladies/9.jpg"></a></td>
                                 <td>{{$item->name}}</td>
                                 <td><input type="text" placeholder={{$item->number}} class="input-mini"></td>
                                 <td>{{$item->price}}</td>
                                 <td>{{$item->price*$item->number}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger" value="Delete" id="item_del"
+                                            onclick="del_item({{$item->id}}, {{$item->order_id}})"><span
+                                            class="glyphicon glyphicon-remove"></span></button>
+                                </td>
                             </tr>
                             {{$priceTotal = $priceTotal + $item->price*$item->number}}
+                            {{$count = $count+1}}
                         @endforeach
                         </tbody>
                     </table>
@@ -46,51 +54,40 @@
                 @endif
                 <hr/>
                 <p class="buttons center">
-                    <button class="btn" type="button">Update</button>
-                    <button class="btn" type="button">Continue</button>
-                    <button class="btn btn-inverse" type="submit" id="checkout">Checkout</button>
+                    <button class="btn" type="button" onclick="window.location.href='/updateOrder'">Update</button>
+                    <button class="btn" type="button" onclick="window.location.href='/products'">Continue</button>
+                    <button class="btn btn-inverse" type="submit" id="checkout"
+                            onclick="window.location.href='/checkout'">Checkout
+                    </button>
                 </p>
             </div>
-            <div class="span3 col">
-                <div class="block">
-                    <h4 class="title">
-                        <span class="pull-left"><span class="text">Randomize</span></span>
-                        <span class="pull-right">
-									<a class="left button" href="#myCarousel" data-slide="prev"></a><a
-                                class="right button" href="#myCarousel" data-slide="next"></a>
-								</span>
-                    </h4>
-                    <div id="myCarousel" class="carousel slide">
-                        <div class="carousel-inner">
-                            <div class="active item">
-                                <ul class="thumbnails listing-products">
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <span class="sale_tag"></span>
-                                            <a href="product_detail.html"><img alt="" src="themes/images/ladies/2.jpg"></a><br/>
-                                            <a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
-                                            <a href="#" class="category">Suspendisse aliquet</a>
-                                            <p class="price">$261</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="item">
-                                <ul class="thumbnails listing-products">
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <a href="product_detail.html"><img alt="" src="themes/images/ladies/4.jpg"></a><br/>
-                                            <a href="product_detail.html" class="title">Tempor sem sodales</a><br/>
-                                            <a href="#" class="category">Urna nec lectus mollis</a>
-                                            <p class="price">$134</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+        <script type="text/javascript">
+            function del_item(item) {
+                console.log(item)
+                var result = confirm("Are you sure to delete this item?");
+                if (result) {
+                    $.ajax({
+                        type: 'delete',
+                        url: '{{url('')}}',
+                        data: ({
+                            _token: $('meta[name="csrf-token"]').attr('content'),
+                            'id': item
+                        }),
+                        // success: function (data) {
+                        //     $('#user').html(data.users);
+                        //     $('#post').html(data.posts);
+                        // }
+                    });
+                }
+            }
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        </script>
     </section>
 @endsection
+
