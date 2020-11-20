@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="header_text sub">
-        <img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
+        <img class="pageBanner" src="/images/pageBanner.png" alt="New products">
         <h4><span>Shopping Cart</span></h4>
     </section>
     <section class="main-content">
@@ -55,17 +55,6 @@
                     </tr>
                     </tbody>
                 </table>
-                <h4>What would you like to do next?</h4>
-                <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
-                <label class="radio">
-                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                    Use Coupon Code
-                </label>
-                <label class="radio">
-                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                    Estimate Shipping &amp; Taxes
-                </label>
-                <hr>
                 <p class="cart-total right">
                     <strong>Sub-Total</strong>:	$100.00<br>
                     <strong>Eco Tax (-2.00)</strong>: $2.00<br>
