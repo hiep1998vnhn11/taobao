@@ -19,8 +19,11 @@ Route::get('/', [\App\Http\Controllers\ProductHomeController::class,'show'])->na
 Auth::routes();
 
 Route::get('/cart',[OrderController::class, 'index'])->name('order_by_user');
+Route::post('/addToCart',[OrderController::class, 'store'])->name('add_to_cart');
+Route::delete('/deleteItem', [OrderController::class, 'destroy'])->name('del_item');
+Route::post('/updateItem', [OrderController::class, 'update'])->name('update_item');
 
-Route::get('/product-detail/{id}', 'ProductController@getProduct');
+Route::get('/product-detail/{id}', 'ProductController@getProduct')->name('product-detail');
 
 Route::get('products/{category_id}',[ProductCategoryController::class, 'show']);
 
