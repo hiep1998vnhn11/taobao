@@ -24,4 +24,9 @@ class Item extends Model
         return DB::table('items')
             ->where([['order_id', '=', $user_order->id],['product_id', '=', $product->id]])->get();
     }
+
+    public function deleteItemInOrderUser($order_id, $product_id) {
+        return DB::table('items')
+            ->where([['order_id', '=', $order_id],['product_id', '=', $product_id]])->delete();
+    }
 }

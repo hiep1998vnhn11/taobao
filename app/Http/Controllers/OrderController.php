@@ -6,6 +6,7 @@ use App\Models\Item;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -125,15 +126,44 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return
      */
-    public function destroy(Order $order)
+    public function destroy(Request $request)
     {
         //
+        $item_id = $request->id;
+        $user = Auth::user();
+        $order = DB::table('orders')->where('user_id', $user->id)->get();
+        $item = new Item();
+        $item->deleteItemInOrderUser($order->get(0)->id, $item_id);
+        $list_items_ordered = (new Order())->getOrderById($user->id);
+        $output = ""; $stt = 0;
+        $total = 0;
+        if($list_items_ordered) {
+            foreach ($list_items_ordered as $item) {
+                $delete_button = "<button type='button' class='btn btn-danger' value='Delete' id='item_del' onclick='del_item(.$item->id.)'><span
+                                            class='glyphicon glyphicon - remove'></span></button>";
+                $output .= "<tr>
+                                <td>.$stt.</td>
+                                <td><a href='product_detail.html'><img src='themes/images/ladies/9.jpg'></a></td>
+                                <td>.$item->name</td>
+                                <td><input type='text' placeholder=.$item->number. class='input-mini'></td>
+                                <td>.$item->price.</td>
+                                <td>.$item->price*$item->number.</td>
+                                <td>.$delete_button</td>
+                            </tr>";
+                $stt++;
+                $total += $item->price*$item->number;
+            }
+        } else {
+            $output = "Hiện tại bạn chưa có món hàng nào. Hãy shopping đi nhé!!!";
+        }
+        $output_total = "";
+        $output_total .= "<strong>Sub-Total</strong>: .$total.<br>
+                        <strong>VAT (10%)</strong>: .$total*0.1.<br>
+                        <strong>Total</strong>: .$total*1.1.<br>";
+        return response()->json(['list' => $output, 'total' => $output_total]);
     }
 
-    protected function checkItemInOrder($order, $product) {
-
-    }
 }

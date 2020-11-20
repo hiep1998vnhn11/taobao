@@ -23,10 +23,10 @@
                             <th>Delete</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tblist">
                         {{$count = 1}}
                         @foreach($items_order as $item)
-                            <tr id="item{{$item->id}}">
+                            <tr>
                                 <td>{{$count}}</td>
                                 <td><a href="product_detail.html"><img alt="" src="themes/images/ladies/9.jpg"></a></td>
                                 <td>{{$item->name}}</td>
@@ -35,7 +35,7 @@
                                 <td>{{$item->price*$item->number}}</td>
                                 <td>
                                     <button type="button" class="btn btn-danger" value="Delete" id="item_del"
-                                            onclick="del_item({{$item->id}}, {{$item->order_id}})"><span
+                                            onclick="del_item({{$item->id}})"><span
                                             class="glyphicon glyphicon-remove"></span></button>
                                 </td>
                             </tr>
@@ -44,7 +44,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                    <p class="cart-total right">
+                    <p class="cart-total right" id="total">
                         <strong>Sub-Total</strong>: {{$priceTotal}}<br>
                         <strong>VAT (10%)</strong>: {{$priceTotal*0.1}}<br>
                         <strong>Total</strong>: {{$priceTotal*1.1}}<br>
@@ -63,21 +63,22 @@
             </div>
         </div>
         <script type="text/javascript">
-            function del_item(item) {
-                console.log(item)
+            function del_item(itemId) {
+                console.log(itemId)
                 var result = confirm("Are you sure to delete this item?");
                 if (result) {
                     $.ajax({
                         type: 'delete',
-                        url: '{{url('')}}',
+                        url: '{{url('deleteItem')}}',
                         data: ({
                             _token: $('meta[name="csrf-token"]').attr('content'),
-                            'id': item
+                            'id': itemId
                         }),
-                        // success: function (data) {
-                        //     $('#user').html(data.users);
-                        //     $('#post').html(data.posts);
-                        // }
+                        success: function (data) {
+                            console.log(data);
+                            $('#tblist').html(data.list)
+                            $('#total').html(data.total)
+                        }
                     });
                 }
             }

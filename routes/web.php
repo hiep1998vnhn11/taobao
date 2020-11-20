@@ -20,6 +20,7 @@ Auth::routes();
 
 Route::get('/cart',[OrderController::class, 'index'])->name('order_by_user');
 Route::post('/addToCart',[OrderController::class, 'store'])->name('add_to_cart');
+Route::delete('/deleteItem', [OrderController::class, 'destroy'])->name('del_item');
 
 Route::get('/product-detail', function (){
     return view('product_detail');
