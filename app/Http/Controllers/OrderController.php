@@ -118,9 +118,48 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request)
     {
         //
+        $request_string = json_decode($request->listItemUpdate, true);
+        $list_item = $request_string[0];
+        dd($list_item);
+        $user_id = Auth::user()->id;
+        $order_id = DB::table('orders')->where('user_id', $user_id)->get()->get(0)->id;
+        foreach ($list_item as $item)
+        {
+            dd($item);
+            DB::table('items')
+                ->where([['order_id', '=', $order_id],['product_id', '=', $item->id]])
+                ->update(['number' => $item->quality]);
+        }
+        $list_items_ordered = (new Order())->getOrderById($user_id);
+        $output = ""; $stt = 0;
+        $total = 0;
+        if($list_items_ordered) {
+            foreach ($list_items_ordered as $item) {
+                $delete_button = "<button type='button' class='btn btn-danger' value='Delete' id='item_del' onclick='del_item(.$item->id.)'><span
+                                            class='glyphicon glyphicon - remove'></span></button>";
+                $output .= "<tr>
+                                <td>.$stt.</td>
+                                <td><a href='product_detail.html'><img src='themes/images/ladies/9.jpg'></a></td>
+                                <td>.$item->name</td>
+                                <td><input type='text' placeholder=.$item->number. class='input-mini'></td>
+                                <td>.$item->price.</td>
+                                <td>.$item->price*$item->number.</td>
+                                <td>.$delete_button</td>
+                            </tr>";
+                $stt++;
+                $total += $item->price*$item->number;
+            }
+        } else {
+            $output = "Hiện tại bạn chưa có món hàng nào. Hãy shopping đi nhé!!!";
+        }
+        $output_total = "";
+        $output_total .= "<strong>Sub-Total</strong>: .$total.<br>
+                        <strong>VAT (10%)</strong>: .$total*0.1.<br>
+                        <strong>Total</strong>: .$total*1.1.<br>";
+        return response()->json(['list' => $output, 'total' => $output_total]);
     }
 
     /**

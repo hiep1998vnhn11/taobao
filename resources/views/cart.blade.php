@@ -30,7 +30,7 @@
                                 <td>{{$count}}</td>
                                 <td><a href="product_detail.html"><img alt="" src="themes/images/ladies/9.jpg"></a></td>
                                 <td>{{$item->name}}</td>
-                                <td><input type="text" placeholder={{$item->number}} class="input-mini"></td>
+                                <td><input type="text" value={{$item->number}} class="input-mini" onchange="update_quality({{$item->id}})" id="quality-item{{$item->id}}"></td>
                                 <td>{{$item->price}}</td>
                                 <td>{{$item->price*$item->number}}</td>
                                 <td>
@@ -54,7 +54,7 @@
                 @endif
                 <hr/>
                 <p class="buttons center">
-                    <button class="btn" type="button" onclick="window.location.href='/updateOrder'">Update</button>
+                    <button class="btn" type="button" onclick="btn_update_click()">Update</button>
                     <button class="btn" type="button" onclick="window.location.href='/products'">Continue</button>
                     <button class="btn btn-inverse" type="submit" id="checkout"
                             onclick="window.location.href='/checkout'">Checkout
@@ -82,6 +82,36 @@
                     });
                 }
             }
+
+            var list_change = []
+            function update_quality(itemId) {
+                var string = "quality-item" + itemId
+                var quality = document.getElementById(string).value
+                var changed_status = 0;
+                for(let item of list_change)
+                    if(item.id === itemId) {
+                        changed_status = 1
+                        item.quality = quality
+                    }
+                if(changed_status === 0)
+                    list_change.push({id: itemId, quality: quality})
+            }
+            function btn_update_click() {
+                $.ajax({
+                    type: 'post',
+                    url: '{{url('updateItem')}}',
+                    data: ({
+                        _token: $('meta[name="csrf-token"]').attr('content'),
+                        listItemUpdate: JSON.stringify(list_change)
+                    }),
+                    // success: function (data) {
+                    //     console.log(data);
+                    //     $('#tblist').html(data.list)
+                    //     $('#total').html(data.total)
+                    // }
+                });
+            }
+
 
             $.ajaxSetup({
                 headers: {

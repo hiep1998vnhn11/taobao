@@ -29,4 +29,10 @@ class Item extends Model
         return DB::table('items')
             ->where([['order_id', '=', $order_id],['product_id', '=', $product_id]])->delete();
     }
+
+    public function updateItem($item){
+        return DB::table('items')
+            ->where([['order_id', '=', $item->order_id],['product_id', '=', $item->product_id]])
+            ->update(['number' => $item->number]);
+    }
 }
