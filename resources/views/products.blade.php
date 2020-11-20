@@ -14,7 +14,7 @@
                             <span class="sale_tag"></span>
                             <a href="{{ url("/product-detail/".$item->id) }}"><img alt="" src="{{$item->image}}"></a><br/>
                             <a href="{{ url("/product-detail/".$item->id) }}" class="title">{{$item->name}}</a><br/>
-                            <p class="price">{{$item->price}}</p>
+                            <p class="price">{{$item->price}}.000đ</p>
                         </div>
                     </li>
                     @endforeach
