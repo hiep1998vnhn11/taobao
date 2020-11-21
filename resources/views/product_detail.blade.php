@@ -19,6 +19,7 @@
                         <address>
                             <strong>Thương Hiệu:</strong> <span>{{$product->brand}}</span><br>
                             <strong>Điểm đánh giá:</strong> <span>{{$product->star}}</span><br>
+                            <strong>Số lượng còn lại trong shop: </strong><span>{{$product->number_in_shop}}</span><br>
                             <strong><a href="{{$product->link}}">Taobao Link</a></strong> <br>
                         </address>
                         <h4><strong>Giá: {{$product->price}}.000</strong></h4>
@@ -30,9 +31,12 @@
                             <label>Số lượng:</label>
                             <input type="text" class="span1" placeholder="1" name="quality" value="1">
                             <button class="btn btn-inverse" type="submit">Mua ngay</button>
-                            <button class="btn btn-inverse" type="submit">Giỏ hàng</button>
                         </form>
+                        <button class="btn btn-default btn-block" onclick="window.location.href='/cart'">Giỏ hàng</button>
                     </div>
+                    @if(Session::has('message'))
+                        <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+                    @endif
                 </div>
                 <div class="row">
                     <div class="span9">
@@ -94,6 +98,5 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 @endsection

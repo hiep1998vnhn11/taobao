@@ -6,9 +6,11 @@ use App\Models\Item;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class OrderController extends Controller
 {
@@ -18,7 +20,10 @@ class OrderController extends Controller
         $user_id = Auth::user()->id;
         $order_sevice = new Order();
         $list_items_ordered = $order_sevice->getOrderById($user_id);
-        return view('cart', ['items_order'=>$list_items_ordered]);
+        $total_paid = 0;
+        foreach ($list_items_ordered as $item)
+            $total_paid = $total_paid + $item->price * $item->number;
+        return view('cart', ['items_order'=>$list_items_ordered, 'total_paid' => $total_paid]);
     }
 
     /**
@@ -81,13 +86,15 @@ class OrderController extends Controller
                 $item->number = $quality;
                 $item->save();
             }
-            $saveProduct = new Product();
-            $saveProduct->number_in_shop = $product->number_in_shop - $quality;
-            $saveProduct->update();
+            DB::table('products')->where('id', $product->id)->update(['number_in_shop' => $product->number_in_shop-$quality]);
+            return redirect()->route('order_by_user');
         }
-        $string_route = 'product-detail/';
-        $string_route .= $product_id;
-        return redirect()->route('order_by_user');
+        else {
+            //pop up
+            Session::flash('message', 'This is a message!');
+            Redirect::back()->with('message', 'message|Record updated.');
+        }
+
     }
 
     /**
@@ -141,9 +148,9 @@ class OrderController extends Controller
                                             class='glyphicon glyphicon - remove'></span></button>";
                 $output .= "<tr>
                                 <td>".$stt."</td>
-                                <td><a href='product_detail.html'><img src='themes/images/ladies/9.jpg'></a></td>
+                                <td><a href='{{ url('/product-detail/$item->id) }}'><img src='$item->image' style='max-height: 100px; max-width: 100px;'></a></td>
                                 <td>".$item->name."</td>
-                                <td><input type='text' placeholder='.$item->number.' class='input-mini'></td>
+                                <td><input type='text' placeholder='$item->number' class='input-mini'></td>
                                 <td>".$item->price."</td>
                                 <td>".$item->price*$item->number."</td>
                                 <td>".$delete_button."</td>
@@ -186,9 +193,9 @@ class OrderController extends Controller
                                             class='glyphicon glyphicon - remove'></span></button>";
                 $output .= "<tr>
                                 <td>".$stt."</td>
-                                <td><a href='product_detail.html'><img src='themes/images/ladies/9.jpg'></a></td>
+                                <td><a href='{{ url('/product-detail/$item->id) }}'><img src='$item->image' style='max-height: 100px; max-width: 100px;'></a></td>
                                 <td>".$item->name."</td>
-                                <td><input type='text' placeholder='.$item->number.' class='input-mini'></td>
+                                <td><input type='text' placeholder='$item->number' class='input-mini'></td>
                                 <td>".$item->price."</td>
                                 <td>".$item->price*$item->number."</td>
                                 <td>".$delete_button."</td>";

@@ -10,7 +10,7 @@
             <div class="span11">
                 <h4 class="title"><span class="text"><strong>Your</strong> Cart</span></h4>
                 @if($items_order->count() > 0)
-                    {{$priceTotal = 0}}
+
                     <table class="table table-striped">
                         <thead>
                         <tr>
@@ -24,11 +24,10 @@
                         </tr>
                         </thead>
                         <tbody id="tblist">
-                        {{$count = 1}}
-                        @foreach($items_order as $item)
+                        @foreach($items_order as $key=>$item)
                             <tr>
-                                <td>{{$count}}</td>
-{{--                                <td><a href="{{ url("/product-detail/".$item->id) }}"><img alt="" src="{{$item->image}}"></a></td>--}}
+                                <td>{{$key}}</td>
+                                <td><a href="{{ url("/product-detail/".$item->id) }}"><img alt="" src="{{$item->image}}" style="max-height: 100px; max-width: 100px;"></a></td>
                                 <td>{{$item->name}}</td>
                                 <td><input type="text" value={{$item->number}} class="input-mini" onchange="update_quality({{$item->id}})" id="quality-item{{$item->id}}"></td>
                                 <td>{{$item->price}}</td>
@@ -39,15 +38,13 @@
                                             class="glyphicon glyphicon-remove"></span></button>
                                 </td>
                             </tr>
-                            {{$priceTotal = $priceTotal + $item->price*$item->number}}
-                            {{$count = $count+1}}
                         @endforeach
                         </tbody>
                     </table>
                     <p class="cart-total right" id="total">
-                        <strong>Sub-Total</strong>: {{$priceTotal}}<br>
-                        <strong>VAT (10%)</strong>: {{$priceTotal*0.1}}<br>
-                        <strong>Total</strong>: {{$priceTotal*1.1}}<br>
+                        <strong>Sub-Total</strong>: {{$total_paid}}<br>
+                        <strong>VAT (10%)</strong>: {{$total_paid*0.1}}<br>
+                        <strong>Total</strong>: {{$total_paid*1.1}}<br>
                     </p>
                 @else
                     <h2>Hiện tại bạn chưa có món hàng nào. Hãy shopping đi nhé!!!</h2>

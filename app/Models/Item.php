@@ -26,8 +26,15 @@ class Item extends Model
     }
 
     public function deleteItemInOrderUser($order_id, $product_id) {
-        return DB::table('items')
+        $product = DB::table('products')->where('id', $product_id)->first()->number_in_shop;
+        $number = DB::table('items')->where([['order_id', '=', $order_id],['product_id', '=', $product_id]])->first()->number;
+        $value = $product + $number;
+        DB::table('items')
             ->where([['order_id', '=', $order_id],['product_id', '=', $product_id]])->delete();
+        //update number_in_shop
+
+        return DB::table('products')
+            ->where('id', $product_id)->update(['number_in_shop' => $value]);
     }
 
     public function updateItem($item){
