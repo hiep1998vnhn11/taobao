@@ -37,9 +37,13 @@
         <div class="span8">
             <div class="account pull-right">
                 <ul class="user-menu">
-                    <li><a href="#">Tài khoản</a></li>
-                    <li><a href="{{ url('/cart') }}">Giỏ Hàng</a></li>
-                    <li><a href="{{ url('/checkout') }}">Thanh Toán</a></li>
+                    @if (Auth::check())
+                        <li><a href="{{ url('/cart') }}">Giỏ Hàng</a></li>
+                        <li><a href="{{ url('/checkout') }}">Thanh Toán</a></li>
+                    @else
+                        <li><a href="{{ url('/login') }}">Giỏ Hàng</a></li>
+                        <li><a href="{{ url('/login') }}">Thanh Toán</a></li>
+                    @endif
                     @guest
                         @if (Route::has('login'))
                             <li><a href="{{ route('login') }}">Đăng nhập</a></li>
@@ -52,7 +56,7 @@
                             <a id="navbarDropdown" class="logged_name nav-link dropdown-toggle" href="{{ route('logout') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
                                onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                                <span>{{ Auth::user()->name }}</span>
+                                <span>{{ Auth::user()->username }}</span>
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf

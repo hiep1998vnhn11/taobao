@@ -28,7 +28,7 @@
                         @foreach($items_order as $item)
                             <tr>
                                 <td>{{$count}}</td>
-                                <td><a href="product_detail.html"><img alt="" src="themes/images/ladies/9.jpg"></a></td>
+{{--                                <td><a href="{{ url("/product-detail/".$item->id) }}"><img alt="" src="{{$item->image}}"></a></td>--}}
                                 <td>{{$item->name}}</td>
                                 <td><input type="text" value={{$item->number}} class="input-mini" onchange="update_quality({{$item->id}})" id="quality-item{{$item->id}}"></td>
                                 <td>{{$item->price}}</td>
@@ -55,7 +55,7 @@
                 <hr/>
                 <p class="buttons center">
                     <button class="btn" type="button" onclick="btn_update_click()">Update</button>
-                    <button class="btn" type="button" onclick="window.location.href='/products'">Continue</button>
+                    <button class="btn" type="button" onclick="window.location.href='/'">Continue</button>
                     <button class="btn btn-inverse" type="submit" id="checkout"
                             onclick="window.location.href='/checkout'">Checkout
                     </button>

@@ -10,7 +10,7 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $categories = [
-            ['name'=>'Laptop'],['name'=>'PC'],['name'=>'Tablet'],['name'=>'T-Shirt'],['name'=>'Dress']
+            ['name'=>'Đồ Nữ'],['name'=>'Đồ Nam'],['name'=>'Đồ Thể Thao'],['name'=>'Túi xách'],['name'=>'Giày']
         ];
         foreach ($categories as $cate) {
             DB::table('categories')->insert($cate);
