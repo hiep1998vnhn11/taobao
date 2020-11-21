@@ -19,8 +19,8 @@
         </div>
     </section>
     <section class="header_text">
-        We stand for top quality templates. Our genuine developers always optimized bootstrap commercial templates.
-        <br/>Don't miss to use our cheap abd best bootstrap templates.
+        Những sản phẩm mới luôn được chúng tôi cập nhật liên tục bắt kịp xu hướng thời trang thế giới
+        <br/>Đừng bỏ lỡ cơ hội sở hữu những sản phẩm tuyệt với với mức giá chỉ có tại Taobao.com
     </section>
     <section class="main-content">
         <div class="row">

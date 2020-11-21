@@ -438,6 +438,7 @@ section.navbar{
     -ms-transition: all 0.2s linear;
     transition: all 0.2s linear;
 	box-shadow: 0px 0px 5px #ccc;
+    border: solid orange;
 }
 .product-box:hover a{
 	color:#fff !important;

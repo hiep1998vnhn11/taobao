@@ -21,7 +21,7 @@
                             <strong>Điểm đánh giá:</strong> <span>{{$product->star}}</span><br>
                             <strong><a href="{{$product->link}}">Taobao Link</a></strong> <br>
                         </address>
-                        <h4><strong>Giá: {{$product->price}}</strong></h4>
+                        <h4><strong>Giá: {{$product->price}}.000</strong></h4>
                     </div>
                     <div class="span5">
                         <form class="form-inline" action="/addToCart" method="post">

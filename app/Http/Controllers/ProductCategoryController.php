@@ -10,7 +10,7 @@ class ProductCategoryController extends Controller
 {
     public function show($category_id)
     {
-        $products = Product::where('category_id', $category_id)->paginate(6);
+        $products = Product::where('category_id', $category_id)->paginate(8);
         $category = Category::findOrFail($category_id);
         return view('products', ['paginator'=>$products, 'category'=>$category]);
     }
