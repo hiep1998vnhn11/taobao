@@ -23,6 +23,9 @@
                             <strong><a href="{{$product->link}}">Taobao Link</a></strong> <br>
                         </address>
                         <h4><strong>Giá: {{$product->price}}.000</strong></h4>
+                        @if(Session::has('message'))
+                            <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+                        @endif
                     </div>
                     <div class="span5">
                         <form class="form-inline" action="/addToCart" method="post">
@@ -34,9 +37,6 @@
                         </form>
                         <button class="btn btn-default btn-block" onclick="window.location.href='/cart'">Giỏ hàng</button>
                     </div>
-                    @if(Session::has('message'))
-                        <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
-                    @endif
                 </div>
                 <div class="row">
                     <div class="span9">

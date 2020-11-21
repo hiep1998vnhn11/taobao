@@ -91,8 +91,7 @@ class OrderController extends Controller
         }
         else {
             //pop up
-            Session::flash('message', 'This is a message!');
-            Redirect::back()->with('message', 'message|Record updated.');
+            return redirect()->route('product-detail', [$product_id])->with('message', 'Số lượng sản phẩm đã quá giới hạn trong kho!');
         }
 
     }
