@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/checkout', function () {
         return view('checkout');
     });
+    Route::post('/addItem', [OrderController::class, 'create'])->name('add_item');
     Route::post('/addToCart',[OrderController::class, 'store'])->name('add_to_cart');
     Route::delete('/deleteItem', [OrderController::class, 'destroy'])->name('del_item');
     Route::post('/updateItem', [OrderController::class, 'update'])->name('update_item');
