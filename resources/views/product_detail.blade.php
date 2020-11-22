@@ -38,19 +38,21 @@
                             <strong><a href="{{$product->link}}">Taobao Link</a></strong> <br>
                         </address>
                         <h4><strong>Giá: {{$product->price}}.000</strong></h4>
+                        <div id="message">
                         @if(Session::has('message'))
                             <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
                         @endif
+                        </div>
                     </div>
                     <div class="span5">
                         <form class="form-inline" action="/addToCart" method="post">
                             @csrf
                             <input type="hidden" name="productId" value={{$product->id}}/>
                             <label>Số lượng:</label>
-                            <input type="text" class="span1" placeholder="1" name="quality" value="1">
+                            <input type="text" class="span1" placeholder="1" name="quality" value="1" id="quality_input">
                             <button class="btn btn-inverse" type="submit">Mua ngay</button>
                         </form>
-                        <button class="btn btn-default btn-block" onclick="window.location.href='/cart'">Giỏ hàng</button>
+                        <button class="btn btn-default btn-block" onclick="addItemOrder({{$product->id}})">Giỏ hàng</button>
                     </div>
                 </div>
                 <div class="row">
@@ -113,5 +115,26 @@
                     </div>
                 </div>
             </div>
+        <script type="text/javascript">
+            function addItemOrder(itemId) {
+                    $.ajax({
+                        type: 'post',
+                        url: '{{url('addItem')}}',
+                        data: ({
+                            _token: $('meta[name="csrf-token"]').attr('content'),
+                            'id': itemId,
+                            'quality': $("#quality_input").val()
+                        }),
+                        success: function (data) {
+                            $("#message").html(data.message);
+                        }
+                    });
+            }
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        </script>
     </section>
 @endsection

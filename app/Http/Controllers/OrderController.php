@@ -29,11 +29,61 @@ class OrderController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return void
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        $product_service = new Product();
+        $user_id = Auth::user()->id;
+        $product_id = $request->id;
+        $quality = $request->quality;
+        $output="";
+        $product = $product_service->findProductById($product_id)->get(0);
+        //Check product number before add.
+        if($product->number_in_shop - $quality >= 0) {
+            //Order ok
+            $order = new Order();
+            $order->user_id = $user_id;
+            $order->cost = $product->price * $quality;
+            $user_order = $order->findOrderByUserId($user_id)->get(0);
+            if($user_order != null) {
+                $item = new Item();
+                $item->order_id = $user_order->id;
+                $item->product_id = $product->id;
+                //Can xet truong hop trong gio hang da ton tai mat hang nay
+                // Neu da ton tai thi cong them so luong
+                $itemOrdered = $item->findItemInOrderUser($user_order, $product)->get(0);
+                if($itemOrdered != null) {
+                    $slg = $itemOrdered->number + $quality;
+                    DB::table('items')
+                        ->where([['order_id', '=', $user_order->id],['product_id', '=', $product->id]])
+                        ->update(['number' => $slg]);
+                } else {
+                    // Con neu khong thi chi save
+                    $item->number = $quality;
+                    $item->save();
+                }
+
+            } else {
+                //create new order
+                $order->save();
+                $new_order_id = $order->id;
+                //Save items table
+                $item = new Item();
+                $item->order_id = $new_order_id;
+                $item->product_id = $product->id;
+                $item->number = $quality;
+                $item->save();
+            }
+            DB::table('products')->where('id', $product->id)->update(['number_in_shop' => $product->number_in_shop-$quality]);
+            $output .= "<div class='alert alert-primary' role='alert'>Đã thêm giỏ hàng thành công! Hãy kiểm tra giỏ hàng của bạn</div>";
+            return response()->json(['message'=>$output]);
+        }else {
+            $output .= "<div class='alert alert-warning' role='alert'>Số lượng sản phẩm đã quá giới hạn trong kho!</div>";
+            return response()->json(['message' => $output]);
+        }
     }
 
     /**
@@ -51,7 +101,7 @@ class OrderController extends Controller
 
         $product = $product_service->findProductById($product_id)->get(0);
         //Check product number before add.
-        if($product->number_in_shop - $quality > 0) {
+        if($product->number_in_shop - $quality >= 0) {
             //Order ok
             $order = new Order();
             $order->user_id = $user_id;
@@ -93,7 +143,6 @@ class OrderController extends Controller
             //pop up
             return redirect()->route('product-detail', [$product_id])->with('message', 'Số lượng sản phẩm đã quá giới hạn trong kho!');
         }
-
     }
 
     /**
