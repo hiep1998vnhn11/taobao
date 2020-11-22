@@ -69,21 +69,6 @@
     </div>
 </div>
 <div id="wrapper" class="container">
-    <section class="navbar main-menu">
-        <div class="navbar-inner main-menu">
-            <a href="/" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
-            <nav id="menu" class="pull-right">
-                <ul>
-                    <li><a href="{{ url('/products/1') }}">Đồ nữ</a></li>
-                    <li><a href="{{ url('/products/2') }}">Đồ nam</a></li>
-                    <li><a href="{{ url('/products/3') }}">Đồ thể thao</a></li>
-                    <li><a href="{{ url('/products/4') }}">Túi sách</a></li>
-                    <li><a href="{{ url('/products/5') }}">Giày</a></li>
-                </ul>
-            </nav>
-        </div>
-    </section>
-
     @yield('content')
 
     <section id="footer-bar">
