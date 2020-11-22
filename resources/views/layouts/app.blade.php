@@ -91,11 +91,11 @@
             <div class="span3">
                 <h4>Navigation</h4>
                 <ul class="nav">
-                    <li><a href="./index.html">Trang chủ</a></li>
-                    <li><a href="./about.html">Thông tin</a></li>
-                    <li><a href="./contact.html">Liên hệ</a></li>
-                    <li><a href="./cart.html">Giỏ hàng</a></li>
-                    <li><a href="./register.html">Đăng kí</a></li>
+                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="#">Thông tin</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                    <li><a href="#">Giỏ hàng</a></li>
+                    <li><a href="#">Đăng kí</a></li>
                 </ul>
             </div>
             <div class="span4">
