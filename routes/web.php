@@ -20,6 +20,7 @@ Auth::routes();
 
 Route::get('/cart',[OrderController::class, 'index'])->name('order_by_user');
 Route::post('/addToCart',[OrderController::class, 'store'])->name('add_to_cart');
+Route::post('/addItem', [OrderController::class, 'create'])->name('add_item');
 Route::delete('/deleteItem', [OrderController::class, 'destroy'])->name('del_item');
 Route::post('/updateItem', [OrderController::class, 'update'])->name('update_item');
 
