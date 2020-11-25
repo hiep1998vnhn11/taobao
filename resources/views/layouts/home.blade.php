@@ -43,9 +43,9 @@
                 <ul class="thumbnails listing-products">
                     @foreach($paginator as $item)
                         <li class="span3">
-                            <div class="product-box">
+                            <div class="product-box" style="height: 400px">
                                 <span class="sale_tag"></span>
-                                <a href="{{ url("/product-detail/".$item->id) }}"><img alt="" src="{{$item->image}}"></a><br/>
+                                <a href="{{ url("/product-detail/".$item->id) }}"><img alt="" src="{{$item->image}}" style="height: 300px; width: 270px"></a><br/>
                                 <a href="{{ url("/product-detail/".$item->id) }}" class="title">{{$item->name}}</a><br/>
                                 <p class="price">{{$item->price}}.000đ</p>
                             </div>
