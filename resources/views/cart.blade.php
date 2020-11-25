@@ -18,24 +18,24 @@
 
     <section class="header_text sub">
         <img class="pageBanner" src="/images/pageBanner.png" alt="New products">
-        <h4><span>Shopping Cart</span></h4>
+        <h4><span>Giỏ hàng của bạn</span></h4>
     </section>
     <section class="main-content">
         <div class="row">
             <div class="span11">
-                <h4 class="title"><span class="text"><strong>Your</strong> Cart</span></h4>
+                <h4 class="title"><span class="text"><strong>Giỏ</strong> Hàng</span></h4>
                 @if($items_order->count() > 0)
 
                     <table class="table table-striped">
                         <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Image</th>
-                            <th>Product Name</th>
-                            <th>Quantity</th>
-                            <th>Unit Price</th>
-                            <th>Total</th>
-                            <th>Delete</th>
+                            <th>Ảnh</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Đơn giá (1c)</th>
+                            <th>Thành tiền</th>
+                            <th>Xóa</th>
                         </tr>
                         </thead>
                         <tbody id="tblist">
@@ -57,19 +57,19 @@
                         </tbody>
                     </table>
                     <p class="cart-total right" id="total">
-                        <strong>Sub-Total</strong>: {{$total_paid}}<br>
-                        <strong>VAT (10%)</strong>: {{$total_paid*0.1}}<br>
-                        <strong>Total</strong>: {{$total_paid*1.1}}<br>
+                        <strong>Giá</strong>: {{$total_paid}}<br>
+                        <strong>Thuế (10%)</strong>: {{$total_paid*0.1}}<br>
+                        <strong>Tổng đơn hàng</strong>: {{$total_paid*1.1}}<br>
                     </p>
                 @else
                     <h2>Hiện tại bạn chưa có món hàng nào. Hãy shopping đi nhé!!!</h2>
                 @endif
                 <hr/>
                 <p class="buttons center">
-                    <button class="btn" type="button" onclick="btn_update_click()">Update</button>
-                    <button class="btn" type="button" onclick="window.location.href='/'">Continue</button>
+                    <button class="btn" type="button" onclick="btn_update_click()">Cập nhật</button>
+                    <button class="btn" type="button" onclick="window.location.href='/'">Tiếp tục</button>
                     <button class="btn btn-inverse" type="submit" id="checkout"
-                            onclick="window.location.href='/checkout'">Checkout
+                            onclick="window.location.href='/checkout'">Thanh toán
                     </button>
                 </p>
             </div>
