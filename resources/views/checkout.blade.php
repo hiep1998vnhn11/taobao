@@ -36,19 +36,19 @@
                                         <p>Bằng cách tạo tài khoản, bạn sẽ có thể mua sắm nhanh hơn, cập nhật trạng thái đơn hàng và theo dõi các đơn hàng bạn đã thực hiện trước đó.</p>
                                         <form action="#" method="post">
                                             <fieldset>
-                                                <label class="radio" for="register">
-                                                    <input type="radio" name="account" value="register" id="momo" checked="checked">Momo
-                                                    <img class="payment-logo" src="https://upload.wikimedia.org/wikipedia/vi/archive/f/fe/20201011055543%21MoMo_Logo.png" alt="New products" style="width:30px;height:30px;" >
-                                                </label>
-                                                <label class="radio" for="guest">
-                                                    <input type="radio" name="account" value="guest" id="visa">VISA
-                                                    <img class="payment-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Former_Visa_%28company%29_logo.svg/1280px-Former_Visa_%28company%29_logo.svg.png" alt="New products" style="width:30px;" >
-                                                </label>
+{{--                                                <label class="radio" for="register">--}}
+{{--                                                    <input type="radio" name="account" value="register" id="momo" checked="checked">Momo--}}
+{{--                                                    <img class="payment-logo" src="https://upload.wikimedia.org/wikipedia/vi/archive/f/fe/20201011055543%21MoMo_Logo.png" alt="New products" style="width:30px;height:30px;" >--}}
+{{--                                                </label>--}}
+{{--                                                <label class="radio" for="guest">--}}
+{{--                                                    <input type="radio" name="account" value="guest" id="visa">VISA--}}
+{{--                                                    <img class="payment-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Former_Visa_%28company%29_logo.svg/1280px-Former_Visa_%28company%29_logo.svg.png" alt="New products" style="width:30px;" >--}}
+{{--                                                </label>--}}
                                                 <label class="radio" for="cod-paid">
                                                     <input type="radio" name="account" value="cod-paid" id="cod-paid">Tiền mặt
                                                 </label>
                                                 <br>
-                                                <button class="btn btn-inverse" data-toggle="collapse" data-parent="#collapse2">Continue</button>
+{{--                                                <button class="btn btn-inverse" data-toggle="collapse" data-parent="#collapse2">Continue</button>--}}
                                             </fieldset>
                                         </form>
                                     </div>
