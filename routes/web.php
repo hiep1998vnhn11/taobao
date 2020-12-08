@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductCategoryController;
 
@@ -34,7 +36,8 @@ Route::get('/product-detail/{id}', 'ProductController@getProduct')->name('produc
 Route::get('products/{category_id}',[ProductCategoryController::class, 'show']);
 Route::get('/search-product', [ProductController::class, 'searchByName'])->name('search_product');
 Route::post('/searchItemName', [ProductController::class, 'getItemName'])->name('search_item_name');
-
+Route::get('/dashboard', [DashboardController::class, 'getAllProducts'])->name('dashboardProducts');
+Route::get('/history-order', [DashboardController::class, 'getAllOrder'])->name('dashboardOrders');
 
 
 
