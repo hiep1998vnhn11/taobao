@@ -30,8 +30,9 @@
 <div id="top-bar" class="container">
     <div class="row">
         <div class="span4">
-            <form method="POST" class="">
-                <input type="text" class="input-block-level search-query text-secondary" Placeholder="eg. T-sirt">
+            <form method="POST" class="" action="{{route('search_item_name')}}">
+                @csrf
+                <input id="keyword" name="search_keyword" type="text" class="input-block-level search-query text-secondary" Placeholder="eg. T-sirt">
             </form>
         </div>
         <div class="span8">
@@ -124,5 +125,36 @@
         });
     });
 </script>
+{{--jquery.autocomplete.js--}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.10/jquery.autocomplete.min.js"></script>
+<script>
+    $(function () {
+        $("#keyword").autocomplete({
+            serviceUrl:'/search-product',
+            paramName: "keyword",
+            onSelect: function(suggestion) {
+                $("#keyword").val(suggestion.value);
+            },
+            transformResult: function(response) {
+                return {
+                    suggestions: $.map($.parseJSON(response), function(item) {
+                        return {
+                            value: item.name,
+                        };
+                    })
+                };
+            },
+        });
+    })
+</script>
 </body>
 </html>
+custom css item suggest search
+<style>
+    .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+    .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+    .autocomplete-selected { background: #F0F0F0; }
+    /*.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }*/
+    .autocomplete-group { padding: 2px 5px; }
+    .autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+</style>

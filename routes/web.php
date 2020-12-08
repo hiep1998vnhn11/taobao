@@ -3,6 +3,7 @@
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductCategoryController;
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +31,10 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('/product-detail/{id}', 'ProductController@getProduct')->name('product-detail');
-
 Route::get('products/{category_id}',[ProductCategoryController::class, 'show']);
+Route::get('/search-product', [ProductController::class, 'searchByName'])->name('search_product');
+Route::post('/searchItemName', [ProductController::class, 'getItemName'])->name('search_item_name');
+
 
 
 
