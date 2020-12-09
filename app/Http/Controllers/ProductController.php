@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
     //
+
+    public function create(){
+        return view('dashboard.add_product');
+    }
+
     public function getProduct($id){
         $pro = Product::find($id);
         $listpro = Product::where('category_id',$pro->category_id)->paginate(3);

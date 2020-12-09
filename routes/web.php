@@ -30,14 +30,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/addToCart',[OrderController::class, 'store'])->name('add_to_cart');
     Route::delete('/deleteItem', [OrderController::class, 'destroy'])->name('del_item');
     Route::post('/updateItem', [OrderController::class, 'update'])->name('update_item');
+    Route::post('/searchItemName', [ProductController::class, 'getItemName'])->name('search_item_name');
+    Route::get('/dashboard', [DashboardController::class, 'getAllProducts'])->name('dashboardProducts');
+    Route::get('/history-order', [DashboardController::class, 'getAllOrder'])->name('dashboardOrders');
+    Route::get('/addProduct', [ProductController::class, 'create'])->name('add_product');
 });
 
 Route::get('/product-detail/{id}', 'ProductController@getProduct')->name('product-detail');
 Route::get('products/{category_id}',[ProductCategoryController::class, 'show']);
 Route::get('/search-product', [ProductController::class, 'searchByName'])->name('search_product');
-Route::post('/searchItemName', [ProductController::class, 'getItemName'])->name('search_item_name');
-Route::get('/dashboard', [DashboardController::class, 'getAllProducts'])->name('dashboardProducts');
-Route::get('/history-order', [DashboardController::class, 'getAllOrder'])->name('dashboardOrders');
-
-
-

@@ -1,7 +1,7 @@
 @extends('layouts.dashboard-layout')
 @section('content')
-    <div class="header">
-        <h1 class="page-header center-block">
+    <div class="header center">
+        <h1 class="page-header center-block align-center">
             <strong>PRODUCTS</strong>
         </h1>
     </div>
@@ -59,6 +59,12 @@
             </div>
 
             <div class="col-md-12 col-sm-12 col-xs-12">
+                <div>
+                    <button class="btn btn-info left-bar" onclick="window.location.href='/addProduct'">
+                        <span class="glyphicon glyphicon-plus"></span> Thêm sản phẩm
+                    </button>
+                </div>
+                <br>
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="table-responsive">

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+    <!--[if ie]>
+    <meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
     <!-- bootstrap -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-responsive.min.css') }}" rel="stylesheet">
@@ -21,7 +22,7 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/superfish.js') }}"></script>
     <script src="{{ asset('js/jquery.scrolltotop.js') }}"></script>
-    <!--[if lt IE 9]>
+<!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <script src="{{ asset('js/respond.min.js') }}"></script>
     <![endif]-->
@@ -32,13 +33,15 @@
         <div class="span4">
             <form method="POST" class="" action="{{route('search_item_name')}}">
                 @csrf
-                <input id="keyword" name="search_keyword" type="text" class="input-block-level search-query text-secondary" Placeholder="eg. T-sirt">
+                <input id="keyword" name="search_keyword" type="text"
+                       class="input-block-level search-query text-secondary" Placeholder="eg. T-sirt">
             </form>
         </div>
         <div class="span8">
             <div class="account pull-right">
                 <ul class="user-menu">
                     @if (Auth::check())
+                        <li><a href="{{url('/dashboard')}}">DASHBOARD</a></li>
                         <li><a href="{{ url('/cart') }}">Giỏ Hàng</a></li>
                         <li><a href="{{ url('/checkout') }}">Thanh Toán</a></li>
                     @else
@@ -54,7 +57,9 @@
                         @endif
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="logged_name nav-link dropdown-toggle" href="{{ route('logout') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
+                            <a id="navbarDropdown" class="logged_name nav-link dropdown-toggle"
+                               href="{{ route('logout') }}" role="button" data-toggle="dropdown" aria-haspopup="true"
+                               aria-expanded="false" v-pre
                                onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                                 <span>{{ Auth::user()->username }}</span>
@@ -112,8 +117,8 @@
 <script src="{{ asset('js/common.js') }}"></script>
 <script src="{{ asset('js/jquery.flexslider-min.js') }}"></script>
 <script type="text/javascript">
-    $(function() {
-        $(document).ready(function() {
+    $(function () {
+        $(document).ready(function () {
             $('.flexslider').flexslider({
                 animation: "fade",
                 slideshowSpeed: 4000,
@@ -126,18 +131,19 @@
     });
 </script>
 {{--jquery.autocomplete.js--}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.10/jquery.autocomplete.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.10/jquery.autocomplete.min.js"></script>
 <script>
     $(function () {
         $("#keyword").autocomplete({
-            serviceUrl:'/search-product',
+            serviceUrl: '/search-product',
             paramName: "keyword",
-            onSelect: function(suggestion) {
+            onSelect: function (suggestion) {
                 $("#keyword").val(suggestion.value);
             },
-            transformResult: function(response) {
+            transformResult: function (response) {
                 return {
-                    suggestions: $.map($.parseJSON(response), function(item) {
+                    suggestions: $.map($.parseJSON(response), function (item) {
                         return {
                             value: item.name,
                         };
@@ -151,10 +157,29 @@
 </html>
 custom css item suggest search
 <style>
-    .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
-    .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
-    .autocomplete-selected { background: #F0F0F0; }
+    .autocomplete-suggestions {
+        border: 1px solid #999;
+        background: #FFF;
+        overflow: auto;
+    }
+
+    .autocomplete-suggestion {
+        padding: 2px 5px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .autocomplete-selected {
+        background: #F0F0F0;
+    }
+
     /*.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }*/
-    .autocomplete-group { padding: 2px 5px; }
-    .autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+    .autocomplete-group {
+        padding: 2px 5px;
+    }
+
+    .autocomplete-group strong {
+        display: block;
+        border-bottom: 1px solid #000;
+    }
 </style>

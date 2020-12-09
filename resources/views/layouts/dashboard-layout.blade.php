@@ -20,6 +20,7 @@ Website: http://www.webthemez.com/
     <link href="{{asset('assets/js/morris/morris-0.4.3.min.css')}}" rel="stylesheet" />
     <!-- Custom Styles-->
     <link href="{{asset('assets/css/custom-styles.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/app.css')}}" rel="stylesheet" />
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="{{asset('assets/js/Lightweight-Chart/cssCharts.css')}}">
@@ -56,7 +57,7 @@ Website: http://www.webthemez.com/
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
