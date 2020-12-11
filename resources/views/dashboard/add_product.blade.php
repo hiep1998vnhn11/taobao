@@ -6,13 +6,12 @@
         </h1>
     </div>
     <form method="post" enctype="multipart/form-data">
-
         {{ csrf_field() }}
 
         <div class="col-sm-4">
             <div class="containers">
                 <div class="imageWrapper">
-                    <img class="image" src="http://digital-art-gallery.com/oid/0/1300x648_403_Knight_by_the_lake_2d_fantasy_knight_lake_warrior_picture_image_digital_art.jpg">
+                    <img class="image" src="#" id="preview" alt="product image"/>
                 </div>
             </div>
             <div class="text-center">
@@ -59,7 +58,7 @@
 
         reader.onload = function (e) {
             // get loaded data and render thumbnail.
-            curElement.attr('src', e.target.result);
+            $('#preview').attr('src', e.target.result);
         };
 
         // read the image file as a data URL.
