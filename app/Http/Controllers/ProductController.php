@@ -14,8 +14,28 @@ class ProductController extends Controller
         return view('dashboard.add_product');
     }
 
-    public function addNewProduct(){
+    public function addNewProduct(Request $request){
+        $new_product = new Product();
 
+        if($request->hasFile('product_image')){
+            $file = $request->product_image;
+            $file->move('images', $file->getClientOriginalName());
+            $new_product->image = $file->getClientOriginalName();
+        }
+        else {
+            $new_product->image = "default.jpg";
+        }
+        $new_product->number_in_shop = $request->number;
+        $new_product->name = $request->product_name;
+        $new_product->description = $request->description;
+        $new_product->link = $request->link;
+        $new_product->price = $request->price;
+        $new_product->brand = $request->brand;
+        $new_product->star = 0;
+        $new_product->category_id = $request->category;
+
+        $new_product->save();
+        return redirect()->route('dashboardProducts');
     }
 
     public function getProduct($id){
