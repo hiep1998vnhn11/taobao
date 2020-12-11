@@ -22,7 +22,7 @@
         <div class="col-md-6 offset-md-3">
             <div class="card">
                 <div class="text-center">
-                    <h3>{{ __('Login') }}</h3>
+                    <h3>ĐĂNG NHẬP</h3>
                 </div>
 
                 <div class="card-body">

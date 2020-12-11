@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/deleteItem', [OrderController::class, 'destroy'])->name('del_item');
     Route::post('/updateItem', [OrderController::class, 'update'])->name('update_item');
     Route::post('/searchItemName', [ProductController::class, 'getItemName'])->name('search_item_name');
-    Route::get('/dashboard', [DashboardController::class, 'getAllProducts'])->name('dashboardProducts');
+//    Route::get('/dashboard', [DashboardController::class, 'getAllProducts'])->name('dashboardProducts');
     Route::get('/history-order', [DashboardController::class, 'getAllOrder'])->name('dashboardOrders');
     Route::get('/addProduct', [ProductController::class, 'create'])->name('add_product');
 });
@@ -39,3 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/product-detail/{id}', 'ProductController@getProduct')->name('product-detail');
 Route::get('products/{category_id}',[ProductCategoryController::class, 'show']);
 Route::get('/search-product', [ProductController::class, 'searchByName'])->name('search_product');
+
+Route::group(['middleware' => ['auth', 'isadmin']], function(){
+    Route::get('/dashboard', [DashboardController::class, 'getAllProducts'])->name('dashboardProducts');
+});

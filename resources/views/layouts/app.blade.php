@@ -40,7 +40,7 @@
         <div class="span8">
             <div class="account pull-right">
                 <ul class="user-menu">
-                    @if (Auth::check())
+                    @if (Auth::check() && Auth::user()->isAdmin() == 1)
                         <li><a href="{{url('/dashboard')}}">DASHBOARD</a></li>
                         <li><a href="{{ url('/cart') }}">Giỏ Hàng</a></li>
                         <li><a href="{{ url('/checkout') }}">Thanh Toán</a></li>

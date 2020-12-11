@@ -22,7 +22,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="text-center">
-                    <h3>{{ __('Register') }}</h3>
+                    <h3>ĐĂNG KÍ</h3>
                 </div>
 
                 <div class="card-body">
