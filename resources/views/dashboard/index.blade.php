@@ -81,24 +81,6 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-{{--                                <tr>--}}
-{{--                                    <td><a href="/product-detail/1">4</a></td>--}}
-{{--                                    <td>Váy vóc</td>--}}
-{{--                                    <td>2</td>--}}
-{{--                                    <td>4</td>--}}
-{{--                                    <td>name@site.com</td>--}}
-{{--                                    <td>4/12/2020</td>--}}
-{{--                                    <td>--}}
-{{--                                        <button type="button" class="btn btn-info" value="Edit">--}}
-{{--                                            <span class="glyphicon glyphicon-edit"></span>--}}
-{{--                                        </button>--}}
-{{--                                    </td>--}}
-{{--                                    <td>--}}
-{{--                                        <button type="button" class="btn btn-danger" value="Delete">--}}
-{{--                                            <span class="glyphicon glyphicon-remove"></span>--}}
-{{--                                        </button>--}}
-{{--                                    </td>--}}
-{{--                                </tr>--}}
                                 @foreach($paginator as $item)
                                     <tr>
                                         <td>{{$item->id}}</td>
@@ -136,7 +118,7 @@
     <script type="text/javascript">
         function del_item(itemId) {
             var token = $("meta[name='csrf-token']").attr("content");
-            var result = confirm("Are you sure to delete this item?");
+            var result = confirm("Bạn có muốn xóa sản phẩm này?");
             if (result) {
                 $.ajax({
                     type: 'DELETE',
@@ -145,11 +127,12 @@
                         "_token": token,
                         "id": itemId,
                     }),
-                    success: function (data) {
-                        if(data==true) {
-                            alert("Product " + itemId + " deleted successfully!");
-                            window.location.reload();
-                        }
+                    success: function () {
+                        alert("Sản phẩm id " + itemId + " đã được xóa thành công!");
+                        window.location.reload();
+                    },
+                    error: function (){
+                        alert("Sản phẩm id "+ itemId+ " hiện nằm trong 1 order, chưa thể xóa!");
                     }
                 });
             }

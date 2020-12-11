@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Item;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -15,10 +16,7 @@ class DashboardController extends Controller{
         return view('dashboard.index', ['paginator'=>$products]);
     }
     public function deleteItem($id){
-        $deleted = Product::find($id)->delete();
-        if($deleted){
-            return true;
-        }
+        Product::find($id)->delete();
     }
     public function getAllOrder(){
         $orders = Order::join('users','users.id', '=', 'orders.user_id')->paginate(10);
