@@ -9,7 +9,7 @@ class ProductHomeController extends Controller
 {
     public function show()
     {
-        $products = Product::orderBy('star','DESC')->take(16)->paginate(8);
+        $products = Product::orderBy('star','DESC')->paginate(16);
         $user=Auth::user();
         return view('layouts.home', ['paginator'=>$products, 'user_login'=>$user]);
     }

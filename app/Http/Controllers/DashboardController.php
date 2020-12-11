@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller{
@@ -10,9 +11,17 @@ class DashboardController extends Controller{
         $this->middleware('auth');
     }
     public function getAllProducts(){
-        return view('dashboard.index');
+        $products = Product::paginate(10);
+        return view('dashboard.index', ['paginator'=>$products]);
+    }
+    public function deleteItem($id){
+        $deleted = Product::find($id)->delete();
+        if($deleted){
+            return true;
+        }
     }
     public function getAllOrder(){
-        return view('dashboard.OrderHistory');
+        $orders = Order::join('users','users.id', '=', 'orders.user_id')->paginate(10);
+        return view('dashboard.OrderHistory',['paginator'=>$orders]);
     }
 }

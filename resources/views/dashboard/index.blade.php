@@ -76,113 +76,83 @@
                                     <th>Đã bán</th>
                                     <th>Hàng tồn</th>
                                     <th>Bên bán</th>
-                                    <th>Cập nhật</th>
                                     <th>Sửa thông tin</th>
                                     <th>Xóa</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td><a href="/product-detail/1">1</a></td>
-                                    <td>Váy vóc</td>
-                                    <td>2</td>
-                                    <td>4</td>
-                                    <td>name@site.com</td>
-                                    <td>4/12/2020</td>
-                                    <td>
-                                        <button type="button" class="btn btn-info" value="Edit">
-                                            <span class="glyphicon glyphicon-edit"></span>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger" value="Delete">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="/product-detail/1">1</a></td>
-                                    <td>Váy vóc</td>
-                                    <td>2</td>
-                                    <td>4</td>
-                                    <td>name@site.com</td>
-                                    <td>4/12/2020</td>
-                                    <td>
-                                        <button type="button" class="btn btn-info" value="Edit">
-                                            <span class="glyphicon glyphicon-edit"></span>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger" value="Delete">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="/product-detail/1">2</a></td>
-                                    <td>Váy vóc</td>
-                                    <td>2</td>
-                                    <td>4</td>
-                                    <td>name@site.com</td>
-                                    <td>4/12/2020</td>
-                                    <td>
-                                        <button type="button" class="btn btn-info" value="Edit">
-                                            <span class="glyphicon glyphicon-edit"></span>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger" value="Delete">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="/product-detail/1">3</a></td>
-                                    <td>Váy vóc</td>
-                                    <td>2</td>
-                                    <td>4</td>
-                                    <td>name@site.com</td>
-                                    <td>4/12/2020</td>
-                                    <td>
-                                        <button type="button" class="btn btn-info" value="Edit">
-                                            <span class="glyphicon glyphicon-edit"></span>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger" value="Delete">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="/product-detail/1">4</a></td>
-                                    <td>Váy vóc</td>
-                                    <td>2</td>
-                                    <td>4</td>
-                                    <td>name@site.com</td>
-                                    <td>4/12/2020</td>
-                                    <td>
-                                        <button type="button" class="btn btn-info" value="Edit">
-                                            <span class="glyphicon glyphicon-edit"></span>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger" value="Delete">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </button>
-                                    </td>
-                                </tr>
+{{--                                <tr>--}}
+{{--                                    <td><a href="/product-detail/1">4</a></td>--}}
+{{--                                    <td>Váy vóc</td>--}}
+{{--                                    <td>2</td>--}}
+{{--                                    <td>4</td>--}}
+{{--                                    <td>name@site.com</td>--}}
+{{--                                    <td>4/12/2020</td>--}}
+{{--                                    <td>--}}
+{{--                                        <button type="button" class="btn btn-info" value="Edit">--}}
+{{--                                            <span class="glyphicon glyphicon-edit"></span>--}}
+{{--                                        </button>--}}
+{{--                                    </td>--}}
+{{--                                    <td>--}}
+{{--                                        <button type="button" class="btn btn-danger" value="Delete">--}}
+{{--                                            <span class="glyphicon glyphicon-remove"></span>--}}
+{{--                                        </button>--}}
+{{--                                    </td>--}}
+{{--                                </tr>--}}
+                                @foreach($paginator as $item)
+                                    <tr>
+                                        <td>{{$item->id}}</td>
+                                        <td><a href="/product-detail/{{$item->id}}">{{$item->name}}</a></td>
+                                        <td>000</td>
+                                        <td>{{$item->number_in_shop}}</td>
+                                        <td>{{$item->link}}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-info" value="Edit">
+                                                <span class="glyphicon glyphicon-edit"></span>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <meta name="csrf-token" content="{{ csrf_token() }}">
+                                            <button type="button" class="btn btn-danger" value="Delete" id="item_del"
+                                                    onclick="del_item({{$item->id}})"><span
+                                                    class="glyphicon glyphicon-remove"></span></button>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
+                            <div class="pagination pagination-small pagination-centered">
+                                {{ $paginator ->links('vendor.pagination.default')}}
+                            </div>
                         </div>
                     </div>
                 </div>
 
             </div>
         </div>
-        <!-- /. ROW  -->
         <footer>
         </footer>
     </div>
-    <!-- /. PAGE INNER  -->
+    <script type="text/javascript">
+        function del_item(itemId) {
+            var token = $("meta[name='csrf-token']").attr("content");
+            var result = confirm("Are you sure to delete this item?");
+            if (result) {
+                $.ajax({
+                    type: 'DELETE',
+                    url: "dashboard/deleteItem/"+itemId,
+                    data: ({
+                        "_token": token,
+                        "id": itemId,
+                    }),
+                    success: function (data) {
+                        if(data==true) {
+                            alert("Product " + itemId + " deleted successfully!");
+                            window.location.reload();
+                        }
+                    }
+                });
+            }
+        }
+    </script>
 @endsection

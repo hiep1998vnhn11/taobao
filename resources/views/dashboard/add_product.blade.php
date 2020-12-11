@@ -5,7 +5,10 @@
             <strong>Thêm sản phẩm</strong>
         </h1>
     </div>
-    <div class="row">
+    <form method="post" enctype="multipart/form-data">
+
+        {{ csrf_field() }}
+
         <div class="col-sm-4">
             <div class="containers">
                 <div class="imageWrapper">
@@ -20,36 +23,35 @@
         </div>
         <div class="col-sm-8">
             <div class="registration-form">
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="form-control item" id="masp" placeholder="Mã SP">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control item" id="product_name" placeholder="Tên SP">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control item" id="branch" placeholder="Thương hiệu">
-                    </div>
-                    <div class="form-group">
-                        <input type="number" class="form-control item" id="count" placeholder="Số lượng">
-                    </div>
-                    <div class="form-group">
-                        <input type="numeric" class="form-control item" id="price" placeholder="Giá">
-                    </div>
-                    <div class="form-group">
-                        <input type="numeric" class="form-control item" id="taobao_link" placeholder="Link Taobao">
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control item" rows="4" placeholder="Description"></textarea>
-                    </div>
-                    <div class="form-group text-center">
-                        <button type="button" class="btn btn-info create-account center-btn">Thêm mới</button>
-                    </div>
-                </form>
+                <div class="form-group">
+                    <input type="text" class="form-control item" id="masp" placeholder="Mã SP">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control item" id="product_name" placeholder="Tên SP">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control item" id="branch" placeholder="Thương hiệu">
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control item" id="count" placeholder="Số lượng">
+                </div>
+                <div class="form-group">
+                    <input type="numeric" class="form-control item" id="price" placeholder="Giá">
+                </div>
+                <div class="form-group">
+                    <input type="numeric" class="form-control item" id="taobao_link" placeholder="Link Taobao">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control item" rows="4" placeholder="Description"></textarea>
+                </div>
+                <div class="form-group text-center">
+                    <button type="button" class="btn btn-info create-account center-btn">Thêm mới</button>
+                </div>
             </div>
         </div>
-    </div>
-<script type="text/javascript">
+    </form>
+
+    <script type="text/javascript">
     $('.file-input').change(function(){
         var curElement = $(this).parent().parent().find('.image');
         console.log(curElement);

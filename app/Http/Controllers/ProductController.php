@@ -10,8 +10,12 @@ class ProductController extends Controller
 {
     //
 
-    public function create(){
+    public function showForm(){
         return view('dashboard.add_product');
+    }
+
+    public function addNewProduct(){
+
     }
 
     public function getProduct($id){

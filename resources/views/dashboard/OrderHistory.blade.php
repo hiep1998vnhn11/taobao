@@ -16,68 +16,32 @@
                                 <tr>
                                     <th>Ngày đặt</th>
                                     <th>Tên KH</th>
-                                    <th>Mã SP</th>
-                                    <th>Số lượng</th>
+                                    <th>Mã Hóa Đơn</th>
                                     <th>Địa điểm</th>
                                     <th>Trạng thái</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>12/3/2020</td>
-                                    <td>Nguyen Hieu</td>
-                                    <td>234</td>
-                                    <td>4</td>
-                                    <td>Giai Phóng, Hoang Mai, Ha Noi</td>
-                                    <td>Chờ lấy hàng</td>
-                                    <td>
-                                        <button type="button" class="btn btn-edit" value="Edit">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>12/3/2020</td>
-                                    <td>Nguyen Hieu</td>
-                                    <td>234</td>
-                                    <td>4</td>
-                                    <td>Giai Phóng, Hoang Mai, Ha Noi</td>
-                                    <td>Chờ lấy hàng</td>
-                                    <td>
-                                        <button type="button" class="btn btn-edit" value="Edit">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>12/3/2020</td>
-                                    <td>Nguyen Hieu</td>
-                                    <td>234</td>
-                                    <td>4</td>
-                                    <td>Giai Phóng, Hoang Mai, Ha Noi</td>
-                                    <td>Chờ lấy hàng</td>
-                                    <td>
-                                        <button type="button" class="btn btn-edit" value="Edit">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>12/3/2020</td>
-                                    <td>Nguyen Hieu</td>
-                                    <td>234</td>
-                                    <td>4</td>
-                                    <td>Giai Phóng, Hoang Mai, Ha Noi</td>
-                                    <td>Chờ lấy hàng</td>
-                                    <td>
-                                        <button type="button" class="btn btn-edit" value="Edit">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </button>
-                                    </td>
-                                </tr>
+                                    @foreach($paginator as $item)
+                                        <tr>
+                                            <td>{{$item->updated_at}}</td>
+                                            <td>{{$item->username}}</td>
+                                            <td>{{$item->id}}</td>
+                                            <td>Location Location Location</td>
+                                            <td>Status Status Status</td>
+                                            <td>
+                                                <button type="button" class="btn btn-edit" value="Edit">
+                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
+                            <div class="pagination pagination-small pagination-centered">
+                                {{ $paginator ->links('vendor.pagination.default')}}
+                            </div>
                         </div>
                     </div>
                 </div>

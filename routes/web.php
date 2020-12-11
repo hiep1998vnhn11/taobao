@@ -31,9 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/deleteItem', [OrderController::class, 'destroy'])->name('del_item');
     Route::post('/updateItem', [OrderController::class, 'update'])->name('update_item');
     Route::post('/searchItemName', [ProductController::class, 'getItemName'])->name('search_item_name');
-//    Route::get('/dashboard', [DashboardController::class, 'getAllProducts'])->name('dashboardProducts');
-    Route::get('/history-order', [DashboardController::class, 'getAllOrder'])->name('dashboardOrders');
-    Route::get('/addProduct', [ProductController::class, 'create'])->name('add_product');
+
 });
 
 Route::get('/product-detail/{id}', 'ProductController@getProduct')->name('product-detail');
@@ -42,4 +40,8 @@ Route::get('/search-product', [ProductController::class, 'searchByName'])->name(
 
 Route::group(['middleware' => ['auth', 'isadmin']], function(){
     Route::get('/dashboard', [DashboardController::class, 'getAllProducts'])->name('dashboardProducts');
+    Route::delete('/dashboard/deleteItem/{id}',[DashboardController::class,'deleteItem'])->name('dashboardDeleteItem');
+    Route::get('/history-order', [DashboardController::class, 'getAllOrder'])->name('dashboardOrders');
+    Route::get('/addProduct', [ProductController::class, 'showForm'])->name('form_new_product');
+    Route::post('/addProduct', [ProductController::class,'addNewProduct'])->name('add_new_product');
 });
