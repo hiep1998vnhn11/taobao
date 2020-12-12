@@ -42,6 +42,9 @@ Route::group(['middleware' => ['auth', 'isadmin']], function(){
     Route::get('/dashboard', [DashboardController::class, 'getAllProducts'])->name('dashboardProducts');
     Route::delete('/dashboard/deleteItem/{id}',[DashboardController::class,'deleteItem'])->name('dashboardDeleteItem');
     Route::get('/history-order', [DashboardController::class, 'getAllOrder'])->name('dashboardOrders');
-    Route::get('/addProduct', [ProductController::class, 'showForm'])->name('form_new_product');
-    Route::post('/addProduct', [ProductController::class,'addNewProduct'])->name('add_new_product');
+    Route::get('/addProduct', [ProductController::class, 'showForm'])->name('formNewProduct');
+    Route::post('/addProduct', [ProductController::class,'addNewProduct'])->name('addNewProduct');
+    Route::get('/fixProduct/{id}',[ProductController::class,'showFixForm'])->name('fixFormProduct');
+    Route::post('/fixProduct/{id}', [ProductController::class,'fixProduct'])->name('fixProduct');
+
 });

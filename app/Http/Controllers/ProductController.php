@@ -14,6 +14,29 @@ class ProductController extends Controller
         return view('dashboard.add_product');
     }
 
+    public function showFixForm($id){
+        $product = Product::find($id);
+        return view('dashboard.fix_product',['item'=>$product]);
+    }
+
+    public function fixProduct($id, Request $request){
+        $product = Product::find($id);
+        $product->name = $request->product_name;
+        $product->price = $request->price;
+        $product->link = $request->link;
+        $product->description = $request->description;
+        $product->number_in_shop = $request->number;
+        $product->brand = $request->brand;
+        $product->category_id = $request->category;
+        if($request->hasFile('product_image')){
+            $file = $request->product_image;
+            $file->move('images', $file->getClientOriginalName());
+            $product->image = $file->getClientOriginalName();
+        }
+        $product->save();
+        return redirect('/fixProduct/'.$id);
+    }
+
     public function addNewProduct(Request $request){
         $new_product = new Product();
 

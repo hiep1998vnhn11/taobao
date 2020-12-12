@@ -89,8 +89,9 @@
                                         <td>{{$item->number_in_shop}}</td>
                                         <td>{{$item->link}}</td>
                                         <td>
-                                            <button type="button" class="btn btn-info" value="Edit">
-                                                <span class="glyphicon glyphicon-edit"></span>
+                                            <button type="button" class="btn btn-info" value="Edit"
+                                                    onclick="window.location.href='/fixProduct/'+{{$item->id}}"><span
+                                                    class="glyphicon glyphicon-edit"></span>
                                             </button>
                                         </td>
                                         <td>
