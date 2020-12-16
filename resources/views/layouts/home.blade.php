@@ -38,6 +38,19 @@
         <br/>Đừng bỏ lỡ cơ hội sở hữu những sản phẩm tuyệt với với mức giá chỉ có tại Taobao.com
     </section>
     <section class="main-content">
+
+        <div class="row">
+            <div class="span12">
+                <div class="pull-right">
+                    <form method="POST" class="" action="{{route('search_item_name')}}">
+                        @csrf
+                        <input id="keyword" name="search_keyword" type="text"
+                               class="input-block-level search-query text-secondary" Placeholder="eg. T-sirt">
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="span12">
                 <ul class="thumbnails listing-products">

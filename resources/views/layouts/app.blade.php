@@ -30,14 +30,14 @@
 <body>
 <div id="top-bar" class="container">
     <div class="row">
-        <div class="span4">
-            <form method="POST" class="" action="{{route('search_item_name')}}">
-                @csrf
-                <input id="keyword" name="search_keyword" type="text"
-                       class="input-block-level search-query text-secondary" Placeholder="eg. T-sirt">
-            </form>
-        </div>
-        <div class="span8">
+{{--        <div class="span4">--}}
+{{--            <form method="POST" class="" action="{{route('search_item_name')}}">--}}
+{{--                @csrf--}}
+{{--                <input id="keyword" name="search_keyword" type="text"--}}
+{{--                       class="input-block-level search-query text-secondary" Placeholder="eg. T-sirt">--}}
+{{--            </form>--}}
+{{--        </div>--}}
+        <div class="span12">
             <div class="account pull-right">
                 <ul class="user-menu">
                     @if (Auth::check() && Auth::user()->isAdmin() == 1)
@@ -75,6 +75,7 @@
     </div>
 </div>
 <div id="wrapper" class="container">
+
     @yield('content')
 
     <section id="footer-bar">
