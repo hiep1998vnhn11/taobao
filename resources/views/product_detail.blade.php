@@ -30,17 +30,14 @@
                         <div class="slideshow-container">
 
                             <div class="mySlides">
-                                <div class="numbertext">1 / 3</div>
                                 <img src="{{$product->image}}" style="width:100%">
                             </div>
 
                             <div class="mySlides">
-                                <div class="numbertext">2 / 3</div>
                                 <img src="https://sslimages.shoppersstop.com/sys-master/images/hef/hb4/15710276321310/A20ZINKD01062_BLACK.jpg_2000Wx3000H?imgopt=off" style="width:100%">
                             </div>
 
                             <div class="mySlides">
-                                <div class="numbertext">3 / 3</div>
                                 <img src="https://sslimages.shoppersstop.com/sys-master/images/h5e/hdd/15650005188638/A20ITISS205130P_PURPLE.jpg_2000Wx3000H?imgopt=off" style="width:100%">
                             </div>
 
