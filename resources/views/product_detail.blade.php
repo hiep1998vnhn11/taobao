@@ -24,8 +24,39 @@
             <div class="span9">
                 <div class="row">
                     <div class="span4">
-                        <a href="#" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="{{$product->image}}"></a>
+                        <!-- <a href="#" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="{{$product->image}}"></a> -->
+                        
+                        <!-- Slide show images -->
+                        <div class="slideshow-container">
 
+                            <div class="mySlides">
+                                <img src="{{$product->image}}" style="width:100%">
+                            </div>
+
+                            <div class="mySlides">
+                                <img src="https://sslimages.shoppersstop.com/sys-master/images/hef/hb4/15710276321310/A20ZINKD01062_BLACK.jpg_2000Wx3000H?imgopt=off" style="width:100%">
+                            </div>
+
+                            <div class="mySlides">
+                                <img src="https://sslimages.shoppersstop.com/sys-master/images/h5e/hdd/15650005188638/A20ITISS205130P_PURPLE.jpg_2000Wx3000H?imgopt=off" style="width:100%">
+                            </div>
+
+                            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                        </div>
+                        <br/>
+                        <div class="slide-preview-imgs" style="text-align:center">
+                            <div class="column">
+                                <img class="dot" src="{{$product->image}}" alt="Nature" style="width:100%" onclick="currentSlide(1)">
+                            </div>
+                            <div class="column">
+                                <img class="dot" src="https://sslimages.shoppersstop.com/sys-master/images/hef/hb4/15710276321310/A20ZINKD01062_BLACK.jpg_2000Wx3000H?imgopt=off" alt="Snow" style="width:100%" onclick="currentSlide(2)">
+                            </div>
+                            <div class="column">
+                                <img class="dot" src="https://sslimages.shoppersstop.com/sys-master/images/h5e/hdd/15650005188638/A20ITISS205130P_PURPLE.jpg_2000Wx3000H?imgopt=off" alt="Mountains" style="width:100%" onclick="currentSlide(3)">
+                            </div>
+                        </div>
                     </div>
                     <div class="span5">
                         <h4><strong>{{$product->name}}</strong></h4>
@@ -55,6 +86,7 @@
                         <button class="btn btn-default btn-block" onclick="addItemOrder({{$product->id}})">Giỏ hàng</button>
                     </div>
                 </div>
+                <br/>
                 <div class="row">
                     <div class="span9">
                         <ul class="nav nav-tabs" id="myTab">
@@ -69,7 +101,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="span9">
+                    <div class="">
                         <br>
                         <h4 class="title">
                             <span class="pull-left"><span class="text"><strong>Sản Phần liên Quan</strong></span></span>
@@ -135,6 +167,34 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+        </script>
+        <script>
+            var slideIndex = 1;
+                showSlides(slideIndex);
+
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                var dots = document.getElementsByClassName("dot");
+                if (n > slides.length) {slideIndex = 1}    
+                if (n < 1) {slideIndex = slides.length}
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";  
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex-1].style.display = "block";  
+                dots[slideIndex-1].className += " active";
+            }
         </script>
     </section>
 @endsection

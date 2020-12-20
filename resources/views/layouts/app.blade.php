@@ -26,6 +26,9 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <script src="{{ asset('js/respond.min.js') }}"></script>
     <![endif]-->
+    
+    <!-- FontAwesome Styles-->
+    <link href="{{asset('assets/css/font-awesome.css')}}" rel="stylesheet" />
 </head>
 <body>
 <div id="top-bar" class="container">

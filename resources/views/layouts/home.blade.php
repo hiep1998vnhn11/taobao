@@ -41,11 +41,21 @@
 
         <div class="row">
             <div class="span12">
-                <div class="pull-right">
-                    <form method="POST" class="" action="{{route('search_item_name')}}">
+                <div class="pull-right" style="padding-right: 30px">
+                    <!-- <form method="POST" class="" action="{{route('search_item_name')}}">
                         @csrf
                         <input id="keyword" name="search_keyword" type="text"
                                class="input-block-level search-query text-secondary" Placeholder="eg. T-sirt">
+                    </form> -->
+                    <form method="POST" class="form-search" action="{{route('search_item_name')}}">
+                        <div class="input-append">
+                            @csrf
+                            <input id="keyword" name="search_keyword" type="text"
+                                class="search-query text-secondary" Placeholder="eg. T-sirt"
+                                style="width: 280px; height: 25px;"
+                            >
+                            <button type="submit" class="btn" style="color: #fff; background-image: none; background-color: #eb4800; line-height: 25px; width: 50px;"><i class="fa fa-search"></i></button>
+                        </div>
                     </form>
                 </div>
             </div>
