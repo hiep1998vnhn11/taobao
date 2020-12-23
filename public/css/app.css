@@ -133,7 +133,20 @@ img {
     transition: all 0.2s ease;
 }
 
-.file-upload input.file-input {
+.file-upload input.file-input-first{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    height: 100%;
+}
+
+.file-upload input.file-input-second{
     position: absolute;
     top: 0;
     right: 0;

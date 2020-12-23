@@ -48,6 +48,14 @@ class ProductController extends Controller
         else {
             $new_product->image = "default.jpg";
         }
+//        if($request->hasFile('product_image2')){
+//            $file = $request->product_image2;
+//            $file->move('images', $file->getClientOriginalName());
+//            $new_product->image = $file->getClientOriginalName();
+//        }
+//        else {
+//            $new_product->image = "default.jpg";
+//        }
         $new_product->number_in_shop = $request->number;
         $new_product->name = $request->product_name;
         $new_product->description = $request->description;
