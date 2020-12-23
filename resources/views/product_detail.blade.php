@@ -33,30 +33,18 @@
                                 <img src="{{$product->image}}" style="width:100%">
                             </div>
 
-                            <div class="mySlides">
-                                <img src="https://sslimages.shoppersstop.com/sys-master/images/hef/hb4/15710276321310/A20ZINKD01062_BLACK.jpg_2000Wx3000H?imgopt=off" style="width:100%">
-                            </div>
-
-                            <div class="mySlides">
-                                <img src="https://sslimages.shoppersstop.com/sys-master/images/h5e/hdd/15650005188638/A20ITISS205130P_PURPLE.jpg_2000Wx3000H?imgopt=off" style="width:100%">
-                            </div>
+                            @foreach($listImage as $image)
+                                <div class="mySlides">
+                                    <img src="{{$image->url}}" style="width:100%">
+                                </div>
+                                            
+                            @endforeach
 
                             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                             <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
                         </div>
-                        <br/>
-                        <div class="slide-preview-imgs" style="text-align:center">
-                            <div class="column">
-                                <img class="dot" src="{{$product->image}}" alt="Nature" style="width:100%" onclick="currentSlide(1)">
-                            </div>
-                            <div class="column">
-                                <img class="dot" src="https://sslimages.shoppersstop.com/sys-master/images/hef/hb4/15710276321310/A20ZINKD01062_BLACK.jpg_2000Wx3000H?imgopt=off" alt="Snow" style="width:100%" onclick="currentSlide(2)">
-                            </div>
-                            <div class="column">
-                                <img class="dot" src="https://sslimages.shoppersstop.com/sys-master/images/h5e/hdd/15650005188638/A20ITISS205130P_PURPLE.jpg_2000Wx3000H?imgopt=off" alt="Mountains" style="width:100%" onclick="currentSlide(3)">
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="span5">
                         <h4><strong>{{$product->name}}</strong></h4>
@@ -131,7 +119,7 @@
 
                                         @foreach($listpro as $item)
                                             <li class="span3">
-                                                <div class="product-box">
+                                                <div class="product-box" style="height: 350px">
                                                     <span class="sale_tag"></span>
                                                     <a href="{{ url("/product-detail/".$item->id) }}"><img alt="" src="{{$item->image}}"></a><br/>
                                                     <a href="{{ url("/product-detail/".$item->id) }}" class="title">{{$item->name}}</a><br/>
