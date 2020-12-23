@@ -12,7 +12,7 @@
                     <div class="panel panel-primary">
                         <div class="number">
                             <h3>
-                                <h3>44,023</h3>
+                                <h3>{{$tonkho + $da_ban}}</h3>
                                 <small>Tổng giá trị</small>
                             </h3>
                         </div>
@@ -29,7 +29,7 @@
                     <div class="panel panel-primary">
                         <div class="number">
                             <h3>
-                                <h3>32,850</h3>
+                                <h3>{{$da_ban}}</h3>
                                 <small>Đã bán</small>
                             </h3>
                         </div>
@@ -46,7 +46,7 @@
                     <div class="panel panel-primary">
                         <div class="number">
                             <h3>
-                                <h3>56,150</h3>
+                                <h3>{{$tonkho}}</h3>
                                 <small>Tồn kho</small>
                             </h3>
                         </div>
@@ -85,7 +85,7 @@
                                     <tr>
                                         <td>{{$item->id}}</td>
                                         <td><a href="/product-detail/{{$item->id}}">{{$item->name}}</a></td>
-                                        <td>000</td>
+                                        <td>{{$item->getNumberSold($item->id)}}</td>
                                         <td>{{$item->number_in_shop}}</td>
                                         <td>{{$item->link}}</td>
                                         <td>

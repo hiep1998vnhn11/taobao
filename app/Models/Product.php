@@ -28,4 +28,13 @@ class Product extends Model
     public function findProductById($id) {
         return DB::table('products')->where('id', $id)->get();
     }
+
+    public function getNumberSold($id){
+        $listItem = DB::table('items')->where('product_id', $id)->get();
+        $numbers = 0;
+        foreach ($listItem as $item) {
+            $numbers += $item->number; 
+        }
+        return $numbers;
+    }
 }
