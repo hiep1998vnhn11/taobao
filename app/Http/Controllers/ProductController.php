@@ -40,23 +40,18 @@ class ProductController extends Controller
 
     public function addNewProduct(Request $request){
         $new_product = new Product();
+        $first_picture= new Pictures();
+        $second_picture = new Pictures();
 
         if($request->hasFile('product_image')){
             $file = $request->product_image;
             $file->move('images', $file->getClientOriginalName());
-            $new_product->image = $file->getClientOriginalName();
+            $new_product->image = 'images/'.$file->getClientOriginalName();
         }
         else {
             $new_product->image = "default.jpg";
         }
-//        if($request->hasFile('product_image2')){
-//            $file = $request->product_image2;
-//            $file->move('images', $file->getClientOriginalName());
-//            $new_product->image = $file->getClientOriginalName();
-//        }
-//        else {
-//            $new_product->image = "default.jpg";
-//        }
+
         $new_product->number_in_shop = $request->number;
         $new_product->name = $request->product_name;
         $new_product->description = $request->description;
@@ -67,6 +62,21 @@ class ProductController extends Controller
         $new_product->category_id = $request->category;
 
         $new_product->save();
+
+        $first_picture->product_id = $new_product->id;
+        $first_picture->url = $new_product->image;
+        $first_picture->save();
+
+        $second_picture->product_id = $new_product->id;
+        if($request->hasFile('product_image2')){
+            $file = $request->product_image2;
+            $file->move('images', $file->getClientOriginalName());
+            $second_picture->url = 'images/'.$file->getClientOriginalName();
+        }
+        else {
+            $second_picture->url= "default.jpg";
+        }
+        $second_picture->save();
         return redirect()->route('dashboardProducts');
     }
 

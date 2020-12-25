@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\DB;
 class Pictures extends Model
 {
     use HasFactory;
-     protected $fillable = [
+    public $timestamps = false;
+
+    protected $fillable = [
         'id',
         'product_id',
         'url'
