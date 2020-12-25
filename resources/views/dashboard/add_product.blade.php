@@ -18,7 +18,7 @@
             </div>
             <div class="text-center">
                 <button class="file-upload">
-                    <input type="file" name="product_image" class="file-input-first">Upload Image
+                    <input type="file" name="product_image" class="file-input-first">Upload Image #1
                 </button>
             </div>
             <div class="containers">
@@ -28,7 +28,7 @@
             </div>
             <div class="text-center">
                 <button class="file-upload">
-                    <input type="file" name="product_image2" class="file-input-second">Upload Image
+                    <input type="file" name="product_image2" class="file-input-second">Upload Image #2
                 </button>
             </div>
         </div>
