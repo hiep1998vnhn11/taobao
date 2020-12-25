@@ -30,12 +30,12 @@
                         <div class="slideshow-container">
 
                             <div class="mySlides">
-                                <img src="{{$product->image}}" style="width:100%">
+                                <img src="{{$product->image}}" style="width:100% ;height: 300px">
                             </div>
 
                             @foreach($listImage as $image)
                                 <div class="mySlides">
-                                    <img src="{{$image->url}}" style="width:100%">
+                                    <img src="{{$image->url}}" style="width:100% ;height: 300px">
                                 </div>
                                             
                             @endforeach
@@ -103,9 +103,9 @@
                                     <ul class="thumbnails listing-products">
                                         @foreach($listpro as $item)
                                             <li class="span3">
-                                                <div class="product-box">
+                                                <div class="product-box" style="height: 370px">
                                                     <span class="sale_tag"></span>
-                                                    <a href="{{ url("/product-detail/".$item->id) }}"><img alt="" src="{{$item->image}}"></a><br/>
+                                                    <a href="{{ url("/product-detail/".$item->id) }}"><img alt="" src="{{$item->image}}" style="height: 250px; width: 200px"></a><br/>
                                                     <a href="{{ url("/product-detail/".$item->id) }}" class="title">{{$item->name}}</a><br/>
                                                     <p class="price">{{$item->price}}.000đ</p>
 
@@ -119,9 +119,9 @@
 
                                         @foreach($listpro as $item)
                                             <li class="span3">
-                                                <div class="product-box" style="height: 350px">
+                                                <div class="product-box" style="height: 370px">
                                                     <span class="sale_tag"></span>
-                                                    <a href="{{ url("/product-detail/".$item->id) }}"><img alt="" src="{{$item->image}}"></a><br/>
+                                                    <a href="{{ url("/product-detail/".$item->id) }}"><img alt="" src="{{$item->image}}" style="height: 250px; width: 200px"></a><br/>
                                                     <a href="{{ url("/product-detail/".$item->id) }}" class="title">{{$item->name}}</a><br/>
                                                     <p class="price">{{$item->price}}.000đ</p>
 
