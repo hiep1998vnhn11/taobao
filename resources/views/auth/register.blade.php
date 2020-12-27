@@ -30,7 +30,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Tên đăng nhập') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="text" class="input-full form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Mật khẩu') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="input-full form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -58,7 +58,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Nhập lại mật khẩu') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="input-full form-control" name="password_confirmation" required autocomplete="new-password">
@@ -68,7 +68,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Đăng kí') }}
                                 </button>
                             </div>
                         </div>

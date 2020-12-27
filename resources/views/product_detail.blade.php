@@ -92,7 +92,7 @@
                     <div class="">
                         <br>
                         <h4 class="title">
-                            <span class="pull-left"><span class="text"><strong>Sản Phần liên Quan</strong></span></span>
+                            <span class="pull-left"><span class="text"><strong>SET ĐỒ GỢI Ý</strong></span></span>
                             <span class="pull-right">
 										<a class="left button" href="#myCarousel-1" data-slide="prev"></a><a class="right button" href="#myCarousel-1" data-slide="next"></a>
 									</span>
@@ -101,7 +101,7 @@
                             <div class="carousel-inner">
                                 <div class="active item">
                                     <ul class="thumbnails listing-products">
-                                        @foreach($listpro as $item)
+                                        @foreach($set as $item)
                                             <li class="span3">
                                                 <div class="product-box" style="height: 370px">
                                                     <span class="sale_tag"></span>

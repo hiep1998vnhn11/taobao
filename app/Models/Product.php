@@ -28,6 +28,9 @@ class Product extends Model
     public function findProductById($id) {
         return DB::table('products')->where('id', $id)->get();
     }
+    public function findProductByBrand($brand) {
+        return DB::table('products')->where('brand', $brand)->get();
+    }
 
     public function getNumberSold($id){
         $listItem = DB::table('items')->where('product_id', $id)->get();

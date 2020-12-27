@@ -82,10 +82,11 @@ class ProductController extends Controller
 
     public function getProduct($id){
         $pro = Product::find($id);
+        $set = $pro->findProductByBrand($pro->brand);
         $picture = new Pictures();
         $listImage = $picture->findPictureByProductId($id);
         $listpro = Product::where('category_id',$pro->category_id)->paginate(3);
-        return view('product_detail',['product'=>$pro, 'listpro'=>$listpro, 'listImage'=>$listImage]);
+        return view('product_detail',['product'=>$pro, 'listpro'=>$listpro, 'listImage'=>$listImage, 'set'=>$set]);
     }
 
     //search by name
