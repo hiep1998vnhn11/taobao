@@ -438,7 +438,7 @@ section.navbar{
     -ms-transition: all 0.2s linear;
     transition: all 0.2s linear;
 	box-shadow: 0px 0px 5px #ccc;
-    border: solid orange;
+    border: orange;
 }
 .product-box:hover a{
 	color:#fff !important;
@@ -817,8 +817,8 @@ section.our_client .row{
 
 /* Style the images inside the grid */
 .slide-preview-imgs .column img {
-  opacity: 0.8; 
-  cursor: pointer; 
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 .slide-preview-imgs .column img:hover {

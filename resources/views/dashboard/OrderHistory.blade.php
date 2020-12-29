@@ -29,11 +29,18 @@
                                             <td>{{$item->username}}</td>
                                             <td>{{$item->id}}</td>
                                             <td>Location Location Location</td>
-                                            <td>Status Status Status</td>
+                                            <td>{{$item->status}}</td>
                                             <td>
-                                                <button type="button" class="btn btn-edit" value="Edit">
-                                                    <span class="glyphicon glyphicon-remove"></span>
-                                                </button>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Trạng thái
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <div><a class="dropdown-item" href="/status1/{{$item->id}}">Chờ lấy hàng</a></div>
+                                                        <div><a class="dropdown-item" href="/status2/{{$item->id}}">Đang giao</a></div>
+                                                        <div><a class="dropdown-item" href="/status3/{{$item->id}}">Đã nhận hàng</a></div>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

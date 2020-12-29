@@ -45,5 +45,7 @@ Route::group(['middleware' => ['auth', 'isadmin']], function(){
     Route::post('/addProduct', [ProductController::class,'addNewProduct'])->name('addNewProduct');
     Route::get('/fixProduct/{id}',[ProductController::class,'showFixForm'])->name('fixFormProduct');
     Route::post('/fixProduct/{id}', [ProductController::class,'fixProduct'])->name('fixProduct');
-
+    Route::get('/status1/{id}', [DashboardController::class, 'updateStatus1'])->name('updateStatus1');
+    Route::get('/status2/{id}', [DashboardController::class, 'updateStatus2'])->name('updateStatus2');
+    Route::get('/status3/{id}', [DashboardController::class, 'updateStatus3'])->name('updateStatus3');
 });

@@ -16,6 +16,7 @@ class Order extends Model
         'id',
         'cost',
         'user_id',
+        'status',
         'created_at',
         'updated_at'
     ];

@@ -26,7 +26,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <script src="{{ asset('js/respond.min.js') }}"></script>
     <![endif]-->
-    
+
     <!-- FontAwesome Styles-->
     <link href="{{asset('assets/css/font-awesome.css')}}" rel="stylesheet" />
 </head>
@@ -43,8 +43,10 @@
         <div class="span12">
             <div class="account pull-right">
                 <ul class="user-menu">
-                    @if (Auth::check() && Auth::user()->isAdmin() == 1)
-                        <li><a href="{{url('/dashboard')}}">DASHBOARD</a></li>
+                    @if (Auth::check())
+                        @if(Auth::user()->isAdmin() == 1)
+                            <li><a href="{{url('/dashboard')}}">DASHBOARD</a></li>
+                        @endif
                         <li><a href="{{ url('/cart') }}">Giỏ Hàng</a></li>
                         <li><a href="{{ url('/checkout') }}">Thanh Toán</a></li>
                     @else

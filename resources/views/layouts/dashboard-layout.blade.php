@@ -70,7 +70,7 @@ Website: http://www.webthemez.com/
         <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
                 <li>
-                    <a class="active-menu" href="/dashboard"><i class="fa fa-dashboard"></i>Products</a>
+                    <a href="/dashboard"><i class="fa fa-dashboard"></i>Products</a>
                 </li>
                 <li>
                     <a href="/history-order"><i class="fa fa-inbox"></i>Orders</a>
