@@ -38,7 +38,7 @@ class DashboardController extends Controller
     public function getAllOrder()
     {
         //        $orders = Order::join('users','users.id', '=', 'orders.user_id')->paginate(10);
-        $orders = Details::with('hasProduct', 'user')->paginate(10);
+        $orders = Details::with('hasProduct', 'user')->orderBy('created_at')->paginate(10);
         return view('dashboard.OrderHistory', ['paginator' => $orders]);
     }
 

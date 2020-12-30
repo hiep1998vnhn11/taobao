@@ -28,7 +28,7 @@
                             <tbody>
                                 @foreach($paginator as $item)
                                 <tr>
-                                    <td>{{$item->updated_at}}</td>
+                                    <td>{{$item->created_at}}</td>
                                     <td>{{$item->user->username}}</td>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->id}}</td>
