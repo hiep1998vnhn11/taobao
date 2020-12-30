@@ -17,13 +17,11 @@ class OrderController extends Controller
     public function index()
     {
         //
-        $user_id = Auth::user()->id;
-        $order_sevice = new Order();
-        $list_items_ordered = $order_sevice->getOrderById($user_id);
+        $items = Auth::user()->order->items()->with('product')->get();
         $total_paid = 0;
-        foreach ($list_items_ordered as $item)
-            $total_paid = $total_paid + $item->price * $item->number;
-        return view('cart', ['items_order'=>$list_items_ordered, 'total_paid' => $total_paid]);
+        foreach ($items as $item)
+            $total_paid = $total_paid + $item->number * $item->product->price;
+        return view('cart', ['items_order' => $items, 'total_paid' => $total_paid]);
     }
 
     /**
@@ -39,33 +37,32 @@ class OrderController extends Controller
         $user_id = Auth::user()->id;
         $product_id = $request->id;
         $quality = $request->quality;
-        $output="";
+        $output = "";
         $product = $product_service->findProductById($product_id)->get(0);
         //Check product number before add.
-        if($product->number_in_shop - $quality >= 0) {
+        if ($product->number_in_shop - $quality >= 0) {
             //Order ok
             $order = new Order();
             $order->user_id = $user_id;
             $order->cost = $product->price * $quality;
             $user_order = $order->findOrderByUserId($user_id)->get(0);
-            if($user_order != null) {
+            if ($user_order != null) {
                 $item = new Item();
                 $item->order_id = $user_order->id;
                 $item->product_id = $product->id;
                 //Can xet truong hop trong gio hang da ton tai mat hang nay
                 // Neu da ton tai thi cong them so luong
                 $itemOrdered = $item->findItemInOrderUser($user_order, $product)->get(0);
-                if($itemOrdered != null) {
+                if ($itemOrdered != null) {
                     $slg = $itemOrdered->number + $quality;
                     DB::table('items')
-                        ->where([['order_id', '=', $user_order->id],['product_id', '=', $product->id]])
+                        ->where([['order_id', '=', $user_order->id], ['product_id', '=', $product->id]])
                         ->update(['number' => $slg]);
                 } else {
                     // Con neu khong thi chi save
                     $item->number = $quality;
                     $item->save();
                 }
-
             } else {
                 //create new order
                 $order->save();
@@ -77,10 +74,10 @@ class OrderController extends Controller
                 $item->number = $quality;
                 $item->save();
             }
-            DB::table('products')->where('id', $product->id)->update(['number_in_shop' => $product->number_in_shop-$quality]);
+            DB::table('products')->where('id', $product->id)->update(['number_in_shop' => $product->number_in_shop - $quality]);
             $output .= "<div class='alert alert-primary' role='alert'>Đã thêm giỏ hàng thành công! Hãy kiểm tra giỏ hàng của bạn</div>";
-            return response()->json(['message'=>$output]);
-        }else {
+            return response()->json(['message' => $output]);
+        } else {
             $output .= "<div class='alert alert-warning' role='alert'>Số lượng sản phẩm đã quá giới hạn trong kho!</div>";
             return response()->json(['message' => $output]);
         }
@@ -101,30 +98,29 @@ class OrderController extends Controller
 
         $product = $product_service->findProductById($product_id)->get(0);
         //Check product number before add.
-        if($product->number_in_shop - $quality >= 0) {
+        if ($product->number_in_shop - $quality >= 0) {
             //Order ok
             $order = new Order();
             $order->user_id = $user_id;
             $order->cost = $product->price * $quality;
             $user_order = $order->findOrderByUserId($user_id)->get(0);
-            if($user_order != null) {
+            if ($user_order != null) {
                 $item = new Item();
                 $item->order_id = $user_order->id;
                 $item->product_id = $product->id;
                 //Can xet truong hop trong gio hang da ton tai mat hang nay
                 // Neu da ton tai thi cong them so luong
                 $itemOrdered = $item->findItemInOrderUser($user_order, $product)->get(0);
-                if($itemOrdered != null) {
+                if ($itemOrdered != null) {
                     $slg = $itemOrdered->number + $quality;
                     DB::table('items')
-                        ->where([['order_id', '=', $user_order->id],['product_id', '=', $product->id]])
+                        ->where([['order_id', '=', $user_order->id], ['product_id', '=', $product->id]])
                         ->update(['number' => $slg]);
                 } else {
                     // Con neu khong thi chi save
                     $item->number = $quality;
                     $item->save();
                 }
-
             } else {
                 //create new order
                 $order->save();
@@ -136,10 +132,9 @@ class OrderController extends Controller
                 $item->number = $quality;
                 $item->save();
             }
-            DB::table('products')->where('id', $product->id)->update(['number_in_shop' => $product->number_in_shop-$quality]);
+            DB::table('products')->where('id', $product->id)->update(['number_in_shop' => $product->number_in_shop - $quality]);
             return redirect()->route('order_by_user');
-        }
-        else {
+        } else {
             //pop up
             return redirect()->route('product-detail', [$product_id])->with('message', 'Số lượng sản phẩm đã quá giới hạn trong kho!');
         }
@@ -181,30 +176,30 @@ class OrderController extends Controller
         $list_item = $request_string;
         $user_id = Auth::user()->id;
         $order_id = DB::table('orders')->where('user_id', $user_id)->get()->get(0)->id;
-        foreach ($list_item as $item)
-        {
+        foreach ($list_item as $item) {
             DB::table('items')
-                ->where([['order_id', '=', $order_id],['product_id', '=', $item->id]])
+                ->where([['order_id', '=', $order_id], ['product_id', '=', $item->id]])
                 ->update(['number' => $item->quality]);
         }
         $list_items_ordered = (new Order())->getOrderById($user_id);
-        $output = ""; $stt = 0;
+        $output = "";
+        $stt = 0;
         $total = 0;
-        if($list_items_ordered) {
+        if ($list_items_ordered) {
             foreach ($list_items_ordered as $item) {
                 $delete_button = "<button type='button' class='btn btn-danger' value='Delete' id='item_del' onclick='del_item(.$item->id.)'><span
                                             class='glyphicon glyphicon - remove'></span></button>";
                 $output .= "<tr>
-                                <td>".$stt."</td>
+                                <td>" . $stt . "</td>
                                 <td><a href='{{ url('/product-detail/$item->id) }}'><img src='$item->image' style='max-height: 100px; max-width: 100px;'></a></td>
-                                <td>".$item->name."</td>
+                                <td>" . $item->name . "</td>
                                 <td><input type='text' placeholder='$item->number' class='input-mini'></td>
-                                <td>".$item->price."</td>
-                                <td>".$item->price*$item->number."</td>
-                                <td>".$delete_button."</td>
+                                <td>" . $item->price . "</td>
+                                <td>" . $item->price * $item->number . "</td>
+                                <td>" . $delete_button . "</td>
                             </tr>";
                 $stt++;
-                $total += $item->price*$item->number;
+                $total += $item->price * $item->number;
             }
         } else {
             $output = "Hiện tại bạn chưa có món hàng nào. Hãy shopping đi nhé!!!";
@@ -212,9 +207,9 @@ class OrderController extends Controller
         $output_total = "";
         $VAT = $total * 0.1;
         $total_paid = $total + $VAT;
-        $output_total .= "<strong>Sub-Total</strong>: ".$total."<br>
-                        <strong>VAT (10%)</strong>: ".$VAT."<br>
-                        <strong>Total</strong>: ".$total_paid."<br>";
+        $output_total .= "<strong>Sub-Total</strong>: " . $total . "<br>
+                        <strong>VAT (10%)</strong>: " . $VAT . "<br>
+                        <strong>Total</strong>: " . $total_paid . "<br>";
         return response()->json(['list' => $output, 'total' => $output_total]);
     }
 
@@ -233,22 +228,23 @@ class OrderController extends Controller
         $item = new Item();
         $item->deleteItemInOrderUser($order->get(0)->id, $item_id);
         $list_items_ordered = (new Order())->getOrderById($user->id);
-        $output = ""; $stt = 0;
+        $output = "";
+        $stt = 0;
         $total = 0;
-        if($list_items_ordered) {
+        if ($list_items_ordered) {
             foreach ($list_items_ordered as $item) {
                 $delete_button = "<button type='button' class='btn btn-danger' value='Delete' id='item_del' onclick='del_item(.$item->id.)'><span
                                             class='glyphicon glyphicon - remove'></span></button>";
                 $output .= "<tr>
-                                <td>".$stt."</td>
+                                <td>" . $stt . "</td>
                                 <td><a href='{{ url('/product-detail/$item->id) }}'><img src='$item->image' style='max-height: 100px; max-width: 100px;'></a></td>
-                                <td>".$item->name."</td>
+                                <td>" . $item->name . "</td>
                                 <td><input type='text' placeholder='$item->number' class='input-mini'></td>
-                                <td>".$item->price."</td>
-                                <td>".$item->price*$item->number."</td>
-                                <td>".$delete_button."</td>";
+                                <td>" . $item->price . "</td>
+                                <td>" . $item->price * $item->number . "</td>
+                                <td>" . $delete_button . "</td>";
                 $stt++;
-                $total += $item->price*$item->number;
+                $total += $item->price * $item->number;
             }
         } else {
             $output = "Hiện tại bạn chưa có món hàng nào. Hãy shopping đi nhé!!!";
@@ -256,10 +252,17 @@ class OrderController extends Controller
         $output_total = "";
         $VAT = $total * 0.1;
         $total_paid = $total + $VAT;
-        $output_total .= "<strong>Sub-Total</strong>: ".$total."<br>
-                        <strong>VAT (10%)</strong>: ".$VAT."<br>
-                        <strong>Total</strong>: ".$total_paid."<br>";
+        $output_total .= "<strong>Sub-Total</strong>: " . $total . "<br>
+                        <strong>VAT (10%)</strong>: " . $VAT . "<br>
+                        <strong>Total</strong>: " . $total_paid . "<br>";
         return response()->json(['list' => $output, 'total' => $output_total]);
     }
 
+    public function delete(Item $item)
+    {
+        $order = $item->order;
+        if ($order->user_id !== Auth::user()->id) return redirect('/');
+        $item->delete();
+        return redirect('/cart')->with(['message' => 'Xoá thành công!']);
+    }
 }

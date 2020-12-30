@@ -3,7 +3,7 @@
 
 namespace Database\Seeders;
 
-
+use App\Models\User;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -21,5 +21,11 @@ class UserSeeder extends Seeder
                 'username' => $fake->firstName()
             ]);
         }
+
+        User::create([
+            'username' => 'admin',
+            'password' => bcrypt('admin'),
+            'admin' => 1
+        ]);
     }
 }

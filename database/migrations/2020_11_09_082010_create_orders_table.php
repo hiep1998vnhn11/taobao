@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->float('cost');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-
+            $table->string('status')->default('None');
             $table->timestamps();
         });
     }

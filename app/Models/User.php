@@ -31,7 +31,18 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function isAdmin(){
+    public function isAdmin()
+    {
         return $this->admin;
+    }
+
+    public function details()
+    {
+        return $this->hasMany('App\Models\Details');
+    }
+
+    public function order()
+    {
+        return $this->hasOne('App\Models\Order');
     }
 }

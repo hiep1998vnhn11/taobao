@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('password');
             $table->string('username');
+            $table->boolean('admin')->default(false);
         });
     }
 
