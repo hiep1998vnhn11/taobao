@@ -17,10 +17,13 @@ class OrderController extends Controller
     public function index()
     {
         //
-        $items = Auth::user()->order->items()->with('product')->get();
+        $items = null;
+        $order = Auth::user()->order;
+        if ($order) $items = $order->items()->with('product')->get();
         $total_paid = 0;
-        foreach ($items as $item)
-            $total_paid = $total_paid + $item->number * $item->product->price;
+        if ($items)
+            foreach ($items as $item)
+                $total_paid = $total_paid + $item->number * $item->product->price;
         return view('cart', ['items_order' => $items, 'total_paid' => $total_paid]);
     }
 

@@ -29,7 +29,7 @@
     <div class="row">
         <div class="span11">
             <h4 class="title"><span class="text"><strong>Giỏ</strong>Hàng</span></h4>
-            @if($items_order->count() > 0)
+            @if($items_order)
             <table class="table table-striped">
                 <thead>
                     <tr>
